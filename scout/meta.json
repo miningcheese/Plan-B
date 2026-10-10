@@ -1,0 +1,982 @@
+[
+ {
+  "file": "q00-000.jpg",
+  "query": "Port Louis skyline",
+  "title": "File:Port Louis skyline.jpg",
+  "author": "Mikaeeldh",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis_skyline.jpg",
+  "desc": "The skyline of Port Louis at sunset.",
+  "size": [
+   3024,
+   4032
+  ]
+ },
+ {
+  "file": "q00-001.jpg",
+  "query": "Port Louis skyline",
+  "title": "File:Port Louis, Mauritius.jpg",
+  "author": "Ashok Prabhakaran",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis,_Mauritius.jpg",
+  "desc": "Port Louis",
+  "size": [
+   1024,
+   768
+  ]
+ },
+ {
+  "file": "q00-002.jpg",
+  "query": "Port Louis skyline",
+  "title": "File:Jacques Rigaud, Autre Vue Particulière de Paris depuis Nôtre Dame, Jusques au Pont de la Tournelle.jpg",
+  "author": "Jacques Rigaud",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Jacques_Rigaud,_Autre_Vue_Particuli%C3%A8re_de_Paris_depuis_N%C3%B4tre_Dame,_Jusques_au_Pont_de_la_Tournelle.jpg",
+  "desc": "Jacques Rigaud (Français, 1680-1754): Autre vüe Particulière de Paris, depuis Nôtre Dame, jusques au Pont de la Tournelle où l'on voit, dans l'Eloignement l'hôtel de Ville, St. Jean en Greve, St. Gervais, Et le pont Rouge, prise du Quay de ",
+  "size": [
+   3646,
+   1823
+  ]
+ },
+ {
+  "file": "q00-003.jpg",
+  "query": "Port Louis skyline",
+  "title": "File:Dalian harbour.JPG",
+  "author": "Paul Louis",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "page": "https://commons.wikimedia.org/wiki/File:Dalian_harbour.JPG",
+  "desc": "Dalian is the main port for North East China, and is the 3rd largest port in the whole of China. Here you can see a number of the harbour crains in action and behind them the skyline of Dalian proper.",
+  "size": [
+   1600,
+   1200
+  ]
+ },
+ {
+  "file": "q01-004.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Umbrellas at Caudan Waterfront Mall.JPG",
+  "author": "Martin Falbisoner",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Umbrellas_at_Caudan_Waterfront_Mall.JPG",
+  "desc": "Colorful umbrellas at Caudan Waterfront Mall, Port Louis, Mauritius",
+  "size": [
+   4798,
+   3009
+  ]
+ },
+ {
+  "file": "q01-005.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Une bouche incendie à Caudan Waterfront (Port Louis).jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Une_bouche_incendie_%C3%A0_Caudan_Waterfront_(Port_Louis).jpg",
+  "desc": "Une bouche incendie à Caudan Waterfront (Port Louis).",
+  "size": [
+   2976,
+   3752
+  ]
+ },
+ {
+  "file": "q01-006.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Caudan waterfront (11).jpg",
+  "author": "Mip130916",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Caudan_waterfront_(11).jpg",
+  "desc": "Caudan waterfront",
+  "size": [
+   1438,
+   1078
+  ]
+ },
+ {
+  "file": "q01-007.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Caudan waterfront (12).jpg",
+  "author": "Mip130916",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Caudan_waterfront_(12).jpg",
+  "desc": "Caudan waterfront",
+  "size": [
+   1536,
+   1152
+  ]
+ },
+ {
+  "file": "q01-008.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Caudan waterfront (7).jpg",
+  "author": "Mip130916",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Caudan_waterfront_(7).jpg",
+  "desc": "Caudan waterfront",
+  "size": [
+   1536,
+   1152
+  ]
+ },
+ {
+  "file": "q01-009.jpg",
+  "query": "Caudan Waterfront",
+  "title": "File:Caudan waterfront (24).jpg",
+  "author": "Mip130916",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Caudan_waterfront_(24).jpg",
+  "desc": "Caudan waterfront",
+  "size": [
+   2985,
+   2239
+  ]
+ },
+ {
+  "file": "q02-010.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Port Louis, Mauritius, Bulk Sugar Terminal Quay.jpg",
+  "author": "Richard N Horne",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis,_Mauritius,_Bulk_Sugar_Terminal_Quay.jpg",
+  "desc": "Port Louis, Mauritius, Bulk Sugar Terminal Quay",
+  "size": [
+   2444,
+   1833
+  ]
+ },
+ {
+  "file": "q02-011.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Bust of Nicolas Baudin, Port Louis (Mauritius).jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Bust_of_Nicolas_Baudin,_Port_Louis_(Mauritius).jpg",
+  "desc": "Bust of Nicolas Baudin, Port Louis (Mauritius)",
+  "size": [
+   2892,
+   2957
+  ]
+ },
+ {
+  "file": "q02-012.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Mauritius - Port Louis (Central Market) (17118303459).jpg",
+  "author": "Didier Baertschiger from Genève, Suisse",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mauritius_-_Port_Louis_(Central_Market)_(17118303459).jpg",
+  "desc": "Mauritius - Port Louis (Central Market)",
+  "size": [
+   4016,
+   6016
+  ]
+ },
+ {
+  "file": "q02-013.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Central market, Port Louis, Mauritius 1960s.jpg",
+  "author": "Oderuth",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Central_market,_Port_Louis,_Mauritius_1960s.jpg",
+  "desc": "The old market in the 1960s",
+  "size": [
+   3822,
+   2507
+  ]
+ },
+ {
+  "file": "q02-014.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Accoglienza a Port Louis, Mauritius - panoramio.jpg",
+  "author": "patano",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Accoglienza_a_Port_Louis,_Mauritius_-_panoramio.jpg",
+  "desc": "Accoglienza a Port Louis, Mauritius",
+  "size": [
+   2452,
+   1691
+  ]
+ },
+ {
+  "file": "q02-015.jpg",
+  "query": "Port Louis Mauritius street",
+  "title": "File:Bust of Nicolas Baudin, Port Louis (Mauritius), B&W.jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Bust_of_Nicolas_Baudin,_Port_Louis_(Mauritius),_B%26W.jpg",
+  "desc": "Bust of Nicolas Baudin, Port Louis (Mauritius)",
+  "size": [
+   3032,
+   3010
+  ]
+ },
+ {
+  "file": "q03-016.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Grégoire Massengo, paire de bustes en ébène noire.jpg",
+  "author": "Poro amara",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Gr%C3%A9goire_Massengo,_paire_de_bustes_en_%C3%A9b%C3%A8ne_noire.jpg",
+  "desc": "Grégoire Massengo, paire de bustes en ébène noire",
+  "size": [
+   2048,
+   1260
+  ]
+ },
+ {
+  "file": "q03-017.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Van Gogh - Ebene bei Auvers 1300251.jpg",
+  "author": "Vincent van Gogh",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Ebene_bei_Auvers_1300251.jpg",
+  "desc": "",
+  "size": [
+   3883,
+   2968
+  ]
+ },
+ {
+  "file": "q03-018.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Schiefe Ebene 2019 xy8.jpg",
+  "author": "PeterBraun74",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schiefe_Ebene_2019_xy8.jpg",
+  "desc": "Tag des Wanderns 2019: Wanderweg von Neuenmarkt-Wirsberg nach Marktschorgast",
+  "size": [
+   4000,
+   3000
+  ]
+ },
+ {
+  "file": "q03-019.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Schiefe Ebene 2019 xy34.jpg",
+  "author": "PeterBraun74",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schiefe_Ebene_2019_xy34.jpg",
+  "desc": "Tag des Wanderns 2019: Wanderweg von Neuenmarkt-Wirsberg nach Marktschorgast",
+  "size": [
+   3000,
+   4000
+  ]
+ },
+ {
+  "file": "q03-020.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Schiefe Ebene 2019 xy25.jpg",
+  "author": "PeterBraun74",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schiefe_Ebene_2019_xy25.jpg",
+  "desc": "Tag des Wanderns 2019: Wanderweg von Neuenmarkt-Wirsberg nach Marktschorgast",
+  "size": [
+   4000,
+   3000
+  ]
+ },
+ {
+  "file": "q03-021.jpg",
+  "query": "Ebene Cybercity",
+  "title": "File:Schiefe Ebene 2019 xy14.jpg",
+  "author": "PeterBraun74",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Schiefe_Ebene_2019_xy14.jpg",
+  "desc": "Tag des Wanderns 2019: Wanderweg von Neuenmarkt-Wirsberg nach Marktschorgast",
+  "size": [
+   3000,
+   4000
+  ]
+ },
+ {
+  "file": "q04-022.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Thaipusam celebration 2021, Grand Baie, Mauritius 2.jpg",
+  "author": "EceMuratoglu",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Thaipusam_celebration_2021,_Grand_Baie,_Mauritius_2.jpg",
+  "desc": "This is an image with the theme \"Health and Wellness in Africa\" from:",
+  "size": [
+   3024,
+   4032
+  ]
+ },
+ {
+  "file": "q04-023.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Grand Baie, Public Library, 1865.jpg",
+  "author": "ZoschH",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand_Baie,_Public_Library,_1865.jpg",
+  "desc": "According to the date inscribed on the front of this historical building in Grand Baie, Mauritius, it was erected in 1865. In 2023, it was used as public library.",
+  "size": [
+   3840,
+   2160
+  ]
+ },
+ {
+  "file": "q04-024.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Thaipusam celebration 2021, Grand Baie, Mauritius.jpg",
+  "author": "EceMuratoglu",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Thaipusam_celebration_2021,_Grand_Baie,_Mauritius.jpg",
+  "desc": "This is an image with the theme \"Health and Wellness in Africa\" from:",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q04-025.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Grand Baie, Bazar.JPG",
+  "author": "Karsten Ratzke",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand_Baie,_Bazar.JPG",
+  "desc": "Grand Baie, Bazar",
+  "size": [
+   4832,
+   3120
+  ]
+ },
+ {
+  "file": "q04-026.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Grand Baie, Adolphe de Plevitz State Secondary School.jpg",
+  "author": "Karsten Ratzke",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand_Baie,_Adolphe_de_Plevitz_State_Secondary_School.jpg",
+  "desc": "Grand Baie, Adolphec de Plevitz State Secondary School",
+  "size": [
+   4928,
+   3264
+  ]
+ },
+ {
+  "file": "q04-027.jpg",
+  "query": "Grand Baie Mauritius",
+  "title": "File:Grand Baie , Super U.JPG",
+  "author": "Karsten Ratzke",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Grand_Baie_,_Super_U.JPG",
+  "desc": "Grand Baie, shopping mall Super U",
+  "size": [
+   4728,
+   2896
+  ]
+ },
+ {
+  "file": "q05-028.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:Le Costa Mediterranea dans la rade de Port Louis (Maurice) le 29 février 2020.jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Costa_Mediterranea_dans_la_rade_de_Port_Louis_(Maurice)_le_29_f%C3%A9vrier_2020.jpg",
+  "desc": "Le Costa Mediterranea dans la rade de Port Louis (Maurice) le 29 février 2020. Il devrait rester quelques jours après avoir été refoulé des Seychelles dans le contexte du coronavirus.",
+  "size": [
+   3703,
+   2244
+  ]
+ },
+ {
+  "file": "q05-029.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:Port Louis harbour, February 2020.jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis_harbour,_February_2020.jpg",
+  "desc": "Port Louis harbour.",
+  "size": [
+   3867,
+   2706
+  ]
+ },
+ {
+  "file": "q05-030.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:Port Louis Harbour (4721267599).jpg",
+  "author": "carrotmadman6 from Mauritius",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis_Harbour_(4721267599).jpg",
+  "desc": "Port Louis Harbour",
+  "size": [
+   1600,
+   1200
+  ]
+ },
+ {
+  "file": "q05-031.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:Port Louis harbour, February 2020 (2).jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis_harbour,_February_2020_(2).jpg",
+  "desc": "Port Louis harbour, February 2020.",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q05-032.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:Port Louis Harbour Panorama (4721271605).jpg",
+  "author": "carrotmadman6 from Mauritius",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Port_Louis_Harbour_Panorama_(4721271605).jpg",
+  "desc": "Port Louis Harbour Panorama",
+  "size": [
+   6432,
+   1200
+  ]
+ },
+ {
+  "file": "q05-033.jpg",
+  "query": "Port Louis harbour",
+  "title": "File:2020-11 Marion Dufresne 39.jpg",
+  "author": "Antoine Lamielle",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2020-11_Marion_Dufresne_39.jpg",
+  "desc": "The Marion Dufresne off the coast of Mauritius on the way to the French Southern and Antarctic Lands, France.",
+  "size": [
+   5150,
+   2897
+  ]
+ },
+ {
+  "file": "q06-034.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Brabant Mauritius with Car Park.jpg",
+  "author": "AmyAbroad",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Brabant_Mauritius_with_Car_Park.jpg",
+  "desc": "Cars parked at Le Morne Brabant public beach car park in Mauritius",
+  "size": [
+   1744,
+   1308
+  ]
+ },
+ {
+  "file": "q06-035.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Beach with Le Morne Brabant Mountain in the background, Mauritius (53698223315).jpg",
+  "author": "\"dronepicr\"",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Beach_with_Le_Morne_Brabant_Mountain_in_the_background,_Mauritius_(53698223315).jpg",
+  "desc": "Mauritius",
+  "size": [
+   6240,
+   4160
+  ]
+ },
+ {
+  "file": "q06-036.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Mauritius tunliweb 01.jpg",
+  "author": "Svein-Magne Tunli - tunliweb.no",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Mauritius_tunliweb_01.jpg",
+  "desc": "Le Morne beach Mauritius, Afrika tunliweb",
+  "size": [
+   1500,
+   1000
+  ]
+ },
+ {
+  "file": "q06-037.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Mauritius tunliweb 02.jpg",
+  "author": "Svein-Magne Tunli - tunliweb.no",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Mauritius_tunliweb_02.jpg",
+  "desc": "Le Morne beach Mauritius, Afrika tunliweb",
+  "size": [
+   1500,
+   1000
+  ]
+ },
+ {
+  "file": "q06-038.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Beach Mauritius (53698222865).jpg",
+  "author": "\"dronepicr\"",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Beach_Mauritius_(53698222865).jpg",
+  "desc": "Mauritius",
+  "size": [
+   5820,
+   3880
+  ]
+ },
+ {
+  "file": "q06-039.jpg",
+  "query": "Le Morne Brabant beach",
+  "title": "File:Le Morne Beach in Mauritius (53698123559).jpg",
+  "author": "\"dronepicr\"",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Le_Morne_Beach_in_Mauritius_(53698123559).jpg",
+  "desc": "Mauritius",
+  "size": [
+   6076,
+   4051
+  ]
+ },
+ {
+  "file": "q07-040.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Plage de Flic-en-Flac - nuage.JPG",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Plage_de_Flic-en-Flac_-_nuage.JPG",
+  "desc": "Flic en Flac à Maurice en 2018.",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q07-041.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Footprints on beach of Flic-en-Flac (Mauritius) in 2018.jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Footprints_on_beach_of_Flic-en-Flac_(Mauritius)_in_2018.jpg",
+  "desc": "Footprints on beach of Flic-en-Flac (Mauritius) in 2018.",
+  "size": [
+   3024,
+   4032
+  ]
+ },
+ {
+  "file": "q07-042.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Flic en Flac beach .jpg",
+  "author": "Gavish Barosee",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Flic_en_Flac_beach_.jpg",
+  "desc": "Southern part of Flic en Flac beach (Wolmar)",
+  "size": [
+   4000,
+   3000
+  ]
+ },
+ {
+  "file": "q07-043.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Flic en Flac beach, Mauritius.jpg",
+  "author": "HAI YANG",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Flic_en_Flac_beach,_Mauritius.jpg",
+  "desc": "Flic en Flac beach, the western part of Mauritius.",
+  "size": [
+   1620,
+   1080
+  ]
+ },
+ {
+  "file": "q07-044.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Flic-en-Flac beach, March 2020 (4).jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Flic-en-Flac_beach,_March_2020_(4).jpg",
+  "desc": "Flic-en-Flac beach, March 2020",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q07-045.jpg",
+  "query": "Flic en Flac beach",
+  "title": "File:Flic-en-Flac beach, March 2020 (1).jpg",
+  "author": "Benoît Prieur",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Flic-en-Flac_beach,_March_2020_(1).jpg",
+  "desc": "Flic-en-Flac beach",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q08-046.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Aerial view of Trou-aux-Biches, Mauritius (53697980183).jpg",
+  "author": "\"dronepicr\"",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Trou-aux-Biches,_Mauritius_(53697980183).jpg",
+  "desc": "Mauritius",
+  "size": [
+   5464,
+   3640
+  ]
+ },
+ {
+  "file": "q08-047.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Trou-aux-Biches (3).jpg",
+  "author": "Шохбоз",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Trou-aux-Biches_(3).jpg",
+  "desc": "Пляж",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q08-048.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Trou-aux-Biches (4).jpg",
+  "author": "Шохбоз",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Trou-aux-Biches_(4).jpg",
+  "desc": "Казуарина",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q08-049.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Trou-aux-Biches (6).jpg",
+  "author": "Шохбоз",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Trou-aux-Biches_(6).jpg",
+  "desc": "Узкие дороги Тру-о-Биш",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q08-050.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Trou-aux-Biches (2).jpg",
+  "author": "Шохбоз",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Trou-aux-Biches_(2).jpg",
+  "desc": "Остановка около пляжа",
+  "size": [
+   4032,
+   3024
+  ]
+ },
+ {
+  "file": "q08-051.jpg",
+  "query": "Trou aux Biches",
+  "title": "File:Trou aux Biches, Post office.JPG",
+  "author": "Karsten Ratzke",
+  "license": "CC0",
+  "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Trou_aux_Biches,_Post_office.JPG",
+  "desc": "Trou aux Biches, Post office",
+  "size": [
+   4928,
+   3264
+  ]
+ },
+ {
+  "file": "q09-052.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:Mauritius belle mare beach.jpg",
+  "author": "Arne Müseler",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Mauritius_belle_mare_beach.jpg",
+  "desc": "Belle Mare, Mauritius",
+  "size": [
+   5023,
+   3762
+  ]
+ },
+ {
+  "file": "q09-053.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:Mauritius long beach golf spa ressort.jpg",
+  "author": "Arne Müseler",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Mauritius_long_beach_golf_spa_ressort.jpg",
+  "desc": "Belle Mare, Mauritius",
+  "size": [
+   5272,
+   3948
+  ]
+ },
+ {
+  "file": "q09-054.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:Belle Mare 8.jpg",
+  "author": "Гульнара Бектемировна",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Belle_Mare_8.jpg",
+  "desc": "nature",
+  "size": [
+   4608,
+   2979
+  ]
+ },
+ {
+  "file": "q09-055.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:Long Beach container port.jpg",
+  "author": "biofriendly",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Long_Beach_container_port.jpg",
+  "desc": "Long Beach container port",
+  "size": [
+   3072,
+   2304
+  ]
+ },
+ {
+  "file": "q09-056.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:Breakers hotel Long Beach WA.jpg",
+  "author": "Unknown authorUnknown author",
+  "license": "Public domain",
+  "licenseUrl": "",
+  "page": "https://commons.wikimedia.org/wiki/File:Breakers_hotel_Long_Beach_WA.jpg",
+  "desc": "Breakers Hotel at Long Beach, Washington, looking inland from a beach dune. (The beach has moved considerably further to the west since this photo was taken.)",
+  "size": [
+   2581,
+   1734
+  ]
+ },
+ {
+  "file": "q09-057.jpg",
+  "query": "Belle Mare beach Mauritius",
+  "title": "File:2021 Gillig BRT 182 of Long Beach Bus.jpg",
+  "author": "Transitsylveonkpop",
+  "license": "CC BY-SA 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2021_Gillig_BRT_182_of_Long_Beach_Bus.jpg",
+  "desc": "City of Long Beach, NY 2021 Gillig BRT #182 leaves Long Beach LIRR station",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ {
+  "file": "q10-058.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:2012-10-24-Tamarin Mauritius - Pycnonotus jocosus - L2088C.JPG",
+  "author": "Luis Correia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2012-10-24-Tamarin_Mauritius_-_Pycnonotus_jocosus_-_L2088C.JPG",
+  "desc": "Pycnonotus jocosus - Condé - Merle de Maurice - Bulbul Orphée",
+  "size": [
+   1504,
+   994
+  ]
+ },
+ {
+  "file": "q10-059.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:2012-10-24-Tamarin Mauritius - Pycnonotus jocosus - L2082CRr.jpg",
+  "author": "Luis Correia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2012-10-24-Tamarin_Mauritius_-_Pycnonotus_jocosus_-_L2082CRr.jpg",
+  "desc": "Pycnonotus jocosus - Condé - Merle de Maurice - Bulbul Orphée",
+  "size": [
+   1512,
+   994
+  ]
+ },
+ {
+  "file": "q10-060.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:2012-10-25-Tamarin Mauritius - Geopelia striata - Accouplement de Géopélies zébrées - L2426R.JPG",
+  "author": "Luis Correia",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:2012-10-25-Tamarin_Mauritius_-_Geopelia_striata_-_Accouplement_de_G%C3%A9op%C3%A9lies_z%C3%A9br%C3%A9es_-_L2426R.JPG",
+  "desc": "Geopelia striata - Géopélie zébrée - Colombine zébrée - Tourterelle pays - Petite tourterelle - (Accouplement)",
+  "size": [
+   1507,
+   995
+  ]
+ },
+ {
+  "file": "q10-061.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:Tamarin (4823918620).jpg",
+  "author": "carrotmadman6 from Mauritius",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tamarin_(4823918620).jpg",
+  "desc": "Tamarin",
+  "size": [
+   1600,
+   1200
+  ]
+ },
+ {
+  "file": "q10-062.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:Tamarin (4823918010).jpg",
+  "author": "carrotmadman6 from Mauritius",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tamarin_(4823918010).jpg",
+  "desc": "Tamarin",
+  "size": [
+   1600,
+   1200
+  ]
+ },
+ {
+  "file": "q10-063.jpg",
+  "query": "Tamarin Mauritius",
+  "title": "File:Tamarin (4823927160).jpg",
+  "author": "carrotmadman6 from Mauritius",
+  "license": "CC BY 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tamarin_(4823927160).jpg",
+  "desc": "Tamarin",
+  "size": [
+   1600,
+   1200
+  ]
+ },
+ {
+  "file": "q11-064.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Mauritius Île aux Cerfs.jpg",
+  "author": "Arne Müseler",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Mauritius_%C3%8Ele_aux_Cerfs.jpg",
+  "desc": "Ile aux Cerfs, Mauritius",
+  "size": [
+   5272,
+   3948
+  ]
+ },
+ {
+  "file": "q11-065.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Mauritius Ile aux Cerfs aerial.jpg",
+  "author": "Arne Müseler",
+  "license": "CC BY-SA 3.0 de",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+  "page": "https://commons.wikimedia.org/wiki/File:Mauritius_Ile_aux_Cerfs_aerial.jpg",
+  "desc": "Ile aux Cerfs, Mauritius",
+  "size": [
+   4983,
+   3732
+  ]
+ },
+ {
+  "file": "q11-066.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Ile aux cerfs ((Mauritius Islands).JPG",
+  "author": "CARRERE Radjiv",
+  "license": "CC BY-SA 3.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ile_aux_cerfs_((Mauritius_Islands).JPG",
+  "desc": "Plage Ile aux cerfs (Océan indien)",
+  "size": [
+   4416,
+   3312
+  ]
+ },
+ {
+  "file": "q11-067.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Ile aux Cerfs (2997576557).jpg",
+  "author": "mwanasimba from La Réunion",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ile_aux_Cerfs_(2997576557).jpg",
+  "desc": "Ile aux Cerfs",
+  "size": [
+   1740,
+   1182
+  ]
+ },
+ {
+  "file": "q11-068.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Ile aux Cerfs (2994015185).jpg",
+  "author": "mwanasimba from La Réunion",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ile_aux_Cerfs_(2994015185).jpg",
+  "desc": "Ile aux Cerfs",
+  "size": [
+   1183,
+   1751
+  ]
+ },
+ {
+  "file": "q11-069.jpg",
+  "query": "Ile aux Cerfs",
+  "title": "File:Ile aux Cerfs (2998416794).jpg",
+  "author": "mwanasimba from La Réunion",
+  "license": "CC BY-SA 2.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ile_aux_Cerfs_(2998416794).jpg",
+  "desc": "Ile aux Cerfs",
+  "size": [
+   1740,
+   1182
+  ]
+ }
+]
