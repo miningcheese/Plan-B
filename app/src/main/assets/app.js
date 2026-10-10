@@ -766,7 +766,7 @@
   });
   $('doc-add').addEventListener('click', function(){
     openActions({ title:'Add another document', text:'Whose is it?', actions:[
-      { label:'Hers', kind:'primary', fn:function(){ askDocName('her'); } },
+      { label:'Mine', kind:'primary', fn:function(){ askDocName('her'); } },
       { label:"Keyla's", fn:function(){ askDocName('keyla'); } }
     ] });
   });

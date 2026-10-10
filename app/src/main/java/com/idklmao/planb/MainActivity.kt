@@ -235,7 +235,7 @@ class MainActivity : Activity() {
     private fun showBiometricPrompt() {
         val builder = BiometricPrompt.Builder(this)
             .setTitle("Unlock documents")
-            .setSubtitle("Her papers stay behind the phone's lock")
+            .setSubtitle("Documents stay behind the phone's lock")
         if (Build.VERSION.SDK_INT >= 30) {
             builder.setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
         } else {
@@ -250,7 +250,7 @@ class MainActivity : Activity() {
 
     private fun confirmWithScreenLock(keyguard: KeyguardManager) {
         @Suppress("DEPRECATION")
-        val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Her papers stay behind the phone's lock")
+        val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Documents stay behind the phone's lock")
         if (intent == null) setUnlocked(true, secure = false) else launchForResult(intent, REQ_UNLOCK, "Couldn't open the phone's lock")
     }
 
