@@ -26,8 +26,8 @@ Ticks on the meter and the to-do list stay saved on the phone, also across updat
 
 ## Getting it onto a phone
 
-1. Every push runs **Build APK** and publishes a release, **Plan B build N** (Releases, on the right of the repo page).
-2. On your phone, open the latest release and download `PlanB-N.apk`.
+1. Every push runs **Build APK** and publishes a release, **Business App build N** (Releases, on the right of the repo page).
+2. On your phone, open the latest release and download `BusinessApp-N.apk`.
 3. Send it to her: Signal or WhatsApp (attach it as a file / **Document**), Google Drive or Quick Share.
 4. She taps the file and allows "install unknown apps" when Android asks. If Play Protect warns about an unknown app: **More details → Install anyway**.
 
