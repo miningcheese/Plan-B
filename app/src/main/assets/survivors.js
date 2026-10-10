@@ -3,7 +3,9 @@
   Same game (pick Keyla or Babiela, ducks, strays and starers, Taíze and Lauren, PUM-PUM and
   SHITTALK modes), plus: full screen on the phone, the same speed on 60 and 120 Hz screens,
   level-ups every few hundred points with three choices (a sidekick, new havaianas, coxinhas),
-  coxinhas that heal, a third boss (Seu Gérson do Cartório), haptics and her voice.
+  coxinhas that heal, haptics and her voice, and two stages: Brazil (Seu Gérson do Cartório, the
+  Insulin Lady, then Austin & Heather together) and, once they're beaten, Mauritius, where the
+  three of them follow you, tougher, between the crabs, the monkeys and the tourists.
   Opened from Home → Arcade; app.js shares its helpers as window.PlanBKit.
 */
 (function(){
@@ -34,18 +36,24 @@
   let state = "pick", who = null, t = 0, lastScore = 0;
   let P, foes, shots, eshots, fx, score, nextMode, modeT, spawnT, atkT, uid = 0;
   let stats, boss, bossT, bossCount, offer, offerIn, offerAt, volley = 0;
-  let nextOffer, side, pickups, newBest = false, paused = false;
+  let nextOffer, side, pickups, newBest = false, paused = false, stage = 0, stageIn = 0;
   const keys = {};
   let stick = null;
 
+  // One round of bosses per stage, in this order. Austin and Heather come together (key "duo").
   const BOSSES = [
-    { key:"taize",  name:"Taíze, Admin do Patamento", done:"RECLAMAÇÃO ENCERRADA",
-      look:{ shirt:"#9C8F86", pants:"#3B3340", skin:"#F4D6C2", hair:"#1E1714", style:"bun",  prop:"clipboard", frown:true } },
-    { key:"lauren", name:"Lauren, The Manager",       done:"REUNIÃO CANCELADA",
-      look:{ shirt:"#2E3A5C", pants:"#2B2233", skin:"#F1C8B0", hair:"#8A4B2E", style:"pony", prop:"phone", frown:true, collar:true } },
-    { key:"gerson", name:"Seu Gérson do Cartório",   done:"PROCESSO DEFERIDO",
-      look:{ shirt:"#7A6A58", pants:"#3B3340", skin:"#E8C4A8", hair:"#B9B4C2", style:"short", prop:"clipboard", frown:true, collar:true } }
+    { key:"gerson",  name:"Seu Gérson do Cartório", done:"PROCESSO DEFERIDO", every:170,
+      lines:["senha 347", "falta o carimbo", "volte amanhã", "reconhece firma?"],
+      look:{ shirt:"#7A6A58", pants:"#3B3340", skin:"#E8C4A8", hair:"#B9B4C2", style:"short", prop:"clipboard", frown:true, collar:true } },
+    { key:"insulin", name:"The Insulin Lady",       done:"INSULINA APROVADA", every:120,
+      lines:["insulin? denied", "come back next month", "request denied", "fill in form B-27 first"],
+      look:{ shirt:"#9FC7D9", pants:"#3E4A63", skin:"#F1C8B0", hair:"#3B2A22", style:"bun", prop:"clipboard", frown:true, coat:true } },
+    { key:"duo",     name:"Austin & Heather",       done:"TRAUMA BOND BROKEN" }
   ];
+  const AUSTIN  = { key:"austin",  name:"Austin",  every:130, lines:["they will bond through trauma", "skulls for the skull throne", "blood for the blood god"],
+                    look:{ shirt:"#4A5A3E", pants:"#2B2233", skin:"#F1C8B0", hair:"#B89B5E", style:"fade", cap:"#2E3A5C", frown:true } };
+  const HEATHER = { key:"heather", name:"Heather", every:170, lines:[],
+                    look:{ shirt:"#E9A3B8", pants:"#5A5A66", skin:"#F4D6C2", hair:"#E8CF8A", style:"long", hat:"#E8D5B0", frown:false } };
   const SHIRTS = ["#8FB79E","#E28E6B","#7FA0CC","#D8B45A","#B38BC7","#5E6B7A","#C96F8A"];
   const HAIRS  = ["#2A1E18","#6B4630","#B98E4F","#3B3B3B","#8A3B2E","#1A1A1A"];
   const SKINS  = ["#F1C8B0","#D9A07A","#A8704A","#7A4B2E","#F4D6C2","#C68B63"];
@@ -167,15 +175,37 @@
     ctx.fillStyle = flash ? "#FFF" : o.pants; rr(-6, 6, 5, 13 + walk * 0.5, 2); rr(1, 6, 5, 13 - walk * 0.5, 2);
     ctx.fillStyle = flash ? "#FFF" : o.shirt; rr(-9, -9, 18, 18, 6);
     rr(-12, -7, 4, 13, 2); rr(8, -7, 4, 13, 2);
+    if (o.coat){                                         // the doctor's coat, open over scrubs, and a stethoscope
+      ctx.fillStyle = flash ? "#FFF" : "#FBF8FA";
+      rr(-10, -9, 6, 21, 3); rr(4, -9, 6, 21, 3); rr(-12.5, -7, 4.5, 13, 2); rr(8, -7, 4.5, 13, 2);
+      ctx.strokeStyle = "#5E6B7A"; ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(-3, -8); ctx.quadraticCurveTo(-4, 0, 0, 1); ctx.quadraticCurveTo(4, 0, 3, -8); ctx.stroke();
+      ctx.fillStyle = "#5E6B7A"; circ(0, 1.5, 1.6);
+    }
     if (o.collar){ ctx.fillStyle = "#F4F0F2"; tri(-3.2, -9, 3.2, -9, 0, -3); }
     if (o.prop === "clipboard"){ ctx.fillStyle = "#B98E4F"; rr(8, -2, 9, 12, 1.5); ctx.fillStyle = "#FFF"; rr(9.5, 0, 6, 8.5, 1); }
     if (o.prop === "phone"){ ctx.fillStyle = "#2B2233"; rr(9, -3, 5, 8, 1.2); }
     ctx.fillStyle = flash ? "#FFF" : o.skin; circ(0, -17, 8.5);
     ctx.fillStyle = flash ? "#FFF" : o.hair;
-    ctx.beginPath(); ctx.arc(0, -19, 9, Math.PI, 0); ctx.fill();
+    if (o.style === "fade"){                             // short on top, faded on the sides
+      ctx.beginPath(); ctx.arc(0, -19.5, 8.7, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+      ctx.globalAlpha = 0.45; rr(-9, -20, 2.5, 6, 1); rr(6.5, -20, 2.5, 6, 1); ctx.globalAlpha = 1;
+    } else { ctx.beginPath(); ctx.arc(0, -19, 9, Math.PI, 0); ctx.fill(); }
     if (o.style === "bun") circ(0, -29, 4.6);
     else if (o.style === "pony") rr(6.5, -24, 5, 15, 2.5);
     else if (o.style === "long"){ rr(-9.6, -20, 4, 15, 2); rr(5.6, -20, 4, 15, 2); }
+    if (o.cap){                                          // a cap with its brim to the front
+      ctx.fillStyle = flash ? "#FFF" : o.cap;
+      ctx.beginPath(); ctx.arc(0, -21, 9.3, Math.PI, 0); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(0, -21, 11.5, 2.4, 0, 0, 7); ctx.fill();
+      ctx.fillStyle = "rgba(255,255,255,.25)"; circ(0, -29.5, 1.3);
+    }
+    if (o.hat){                                          // a wide-brimmed sun hat with a ribbon
+      ctx.fillStyle = flash ? "#FFF" : o.hat;
+      ctx.beginPath(); ctx.ellipse(0, -24, 15.5, 3.6, 0, 0, 7); ctx.fill();
+      rr(-7.5, -32, 15, 9, 5);
+      ctx.fillStyle = "#C44A71"; rr(-7.5, -26.5, 15, 2.4, 1);
+    }
     const ex = Math.max(-1, Math.min(1, lookX)), ey = Math.max(-1, Math.min(1, lookY));
     if (o.big){
       ctx.fillStyle = "#FFF"; circ(-3.3, -16.5, 3.1); circ(3.3, -16.5, 3.1);
@@ -235,6 +265,58 @@
     ctx.fillStyle = "#D9425E"; ctx.fillRect(-7.3, -7.3, 14.6, 4.5);
     ctx.fillStyle = "#2E3A5C";
     for (let r = 0; r < 2; r++) for (let c = 0; c < 3; c++) circ(-4 + c * 4, 0.5 + r * 3.8, 0.9);
+    ctx.restore();
+  }
+  function drawCrab(f, face){
+    const flash = f.flash > 0, sc = Math.sin(t * 0.5 + f.id) * 2;
+    ctx.save(); ctx.translate(f.x, f.y);
+    ctx.strokeStyle = flash ? "#FFF" : "#B8322F"; ctx.lineWidth = 2; ctx.lineCap = "round";
+    for (let i = -1; i <= 1; i += 2) for (let k = 0; k < 3; k++){ ctx.beginPath(); ctx.moveTo(i * 8, 2 + k * 2); ctx.lineTo(i * (14 + k), 6 + k * 3 + (k % 2 ? sc : -sc) * 0.4); ctx.stroke(); }
+    ctx.fillStyle = flash ? "#FFF" : "#E3483A"; ctx.beginPath(); ctx.ellipse(0, 2, 12, 8, 0, 0, 7); ctx.fill();
+    circ(-12, -6 + sc * 0.3, 4.5); circ(12, -6 - sc * 0.3, 4.5);
+    ctx.fillStyle = "#171316"; circ(-3.5, -4, 1.6); circ(3.5, -4, 1.6);
+    ctx.restore();
+  }
+  function drawMacaco(f, face){
+    const flash = f.flash > 0, sw = Math.sin(t * 0.5 + f.id) * 3;
+    ctx.save(); ctx.translate(f.x, f.y); ctx.scale(face, 1);
+    ctx.strokeStyle = flash ? "#FFF" : "#7E5A3C"; ctx.lineWidth = 3; ctx.lineCap = "round";
+    ctx.beginPath(); ctx.moveTo(-9, 2); ctx.quadraticCurveTo(-20, -2 + sw, -16, -14); ctx.stroke();
+    ctx.fillStyle = flash ? "#FFF" : "#8C6A48"; rr(-8, 4, 4, 9 + sw * 0.3, 2); rr(4, 4, 4, 9 - sw * 0.3, 2);
+    rr(-10, -6, 20, 14, 7);
+    circ(4, -12, 7.5);
+    ctx.fillStyle = flash ? "#FFF" : "#D9B48C"; circ(6, -11, 4.6); circ(-2.5, -14, 2.4);
+    ctx.fillStyle = "#171316"; circ(4.5, -12.5, 1.1); circ(7.5, -12.5, 1.1);
+    ctx.restore();
+  }
+  function drawSlip(s){                                  // a prescription, stamped NEGADO
+    ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(Math.sin(t * 0.2 + s.x * 0.05) * 0.3);
+    ctx.fillStyle = "#FFFDF8"; ctx.strokeStyle = "#5E6B7A"; ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.roundRect(-12, -8, 24, 16, 2); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = "#D9425E"; ctx.font = "700 6.5px Karla, sans-serif"; ctx.textAlign = "center"; ctx.fillText("NEGADO", 0, 2.5);
+    ctx.restore();
+  }
+  function drawSkull(s){
+    ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(Math.sin(t * 0.3 + s.y) * 0.3);
+    ctx.fillStyle = "#F4EFE6"; circ(0, -1, 7); rr(-4.5, 3, 9, 5, 2);
+    ctx.fillStyle = "#33243C"; circ(-2.6, -1.5, 1.9); circ(2.6, -1.5, 1.9); tri(-0.8, 2, 0.8, 2, 0, 0.4);
+    ctx.fillRect(-2.5, 5.5, 1, 2.4); ctx.fillRect(-0.5, 5.5, 1, 2.4); ctx.fillRect(1.5, 5.5, 1, 2.4);
+    ctx.restore();
+  }
+  function drawHat(s){
+    ctx.save(); ctx.translate(s.x, s.y); ctx.rotate(t * 0.25);
+    ctx.fillStyle = "#E8D5B0"; ctx.beginPath(); ctx.ellipse(0, 0, 11, 4, 0, 0, 7); ctx.fill();
+    rr(-5, -6, 10, 6, 3); ctx.fillStyle = "#C44A71"; rr(-5, -2.2, 10, 1.8, 0.8);
+    ctx.restore();
+  }
+  function drawSay(text, x, y){
+    ctx.save(); ctx.translate(x, y);
+    ctx.font = "600 12px Karla, sans-serif";
+    const w = Math.min(ctx.measureText(text).width + 16, W - 16), sx = Math.max(8 - x + w / 2, Math.min(0, W - 8 - x - w / 2));
+    ctx.fillStyle = "#FFFFFF"; ctx.strokeStyle = "rgba(51,36,60,.35)"; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.roundRect(sx - w / 2, -12, w, 22, 11); ctx.fill(); ctx.stroke();
+    tri(-4, 9.5, 4, 9.5, 0, 15);
+    ctx.fillStyle = "#33243C"; ctx.textAlign = "center"; ctx.fillText(text, sx, 3);
     ctx.restore();
   }
   function drawCarimbo(s){
@@ -310,7 +392,7 @@
     foes = []; shots = []; eshots = []; fx = [];
     score = 0; nextMode = MODE_EVERY; modeT = 0; spawnT = 40; atkT = 20;
     stats = { dmg:1, rate:1, range:0, side:0, walk:0, cox:0 };
-    boss = null; bossT = 45 * 60; bossCount = 0; offer = null; offerIn = 0;
+    boss = null; bossT = 45 * 60; bossCount = 0; offer = null; offerIn = 0; stage = 0; stageIn = 0;
     nextOffer = OFFER_EVERY; side = null; pickups = []; newBest = false; lvlEl.hidden = true;
     K.haptic("tick");
   }
@@ -336,6 +418,17 @@
   function spawn(){
     const p = edge(), secs = t / 60, roll = Math.random();
     let f;
+    if (stage === 1){
+      if (roll < 0.22) f = { kind:"macaco", r:13, hp:2, sp:Math.min(2.6, 1.9 + secs * 0.002), pts:35 };
+      else if (roll < 0.5) f = { kind:"crab", r:13, hp:1, sp:Math.min(2.4, 1.6 + secs * 0.002), pts:20 };
+      else if (roll < 0.66) f = { kind:"starer", r:14, hp:2, sp:Math.min(1.4, 0.9 + secs * 0.002), pts:40,
+            walk:80 + Math.random() * 90, pause:0, seed:Math.random() * 9,
+            look:{ shirt:pick(["#F2B33C","#7FD3C6","#F7A8C4","#FBF6F9","#8FB79E"]), pants:pick(["#E8CB92","#7FA0CC","#FBF6F9"]), skin:pick(SKINS), hair:pick(HAIRS), style:pick(STYLES), big:true, hat:Math.random() < 0.6 ? pick(["#E8D5B0","#FBF6F9","#F2B33C"]) : null } };
+      else f = { kind:"pato", r:14, hp:Math.random() < 0.35 ? 2 : 1, sp:Math.min(2.6, 1.6 + secs * 0.003), pts:25 };
+      f.x = p[0]; f.y = p[1]; f.id = ++uid; f.flash = 0; f.maxhp = f.hp; f.dead = false;
+      foes.push(f);
+      return;
+    }
     if (secs > 20 && roll < 0.2){
       f = { kind:"starer", r:14, hp:2, sp:Math.min(1.3, 0.8 + secs * 0.003), pts:40,
             walk:80 + Math.random() * 90, pause:0, seed:Math.random() * 9,
@@ -350,15 +443,34 @@
     foes.push(f);
   }
 
+  function makeBoss(def, hp, p){
+    return { kind:"boss", def:def, x:p[0], y:p[1], r:25, hp:hp, maxhp:hp, shown:hp,
+             sp:0.85, pts:300, id:++uid, flash:0, dead:false, fire:110, touch:0, sayT:90 + Math.random() * 120, say:null };
+  }
   function spawnBoss(){
-    const def = BOSSES[bossCount % BOSSES.length];
-    const hp = 22 + bossCount * 8;
+    const round = BOSSES[bossCount % BOSSES.length];
+    const hp = 22 + bossCount * 8 + stage * 10;
     const p = edge();
-    boss = { kind:"boss", def:def, x:p[0], y:p[1], r:25, hp:hp, maxhp:hp, shown:hp,
-             sp:0.85, pts:300, id:++uid, flash:0, dead:false, fire:110, touch:0 };
-    foes.push(boss);
-    fx.push({ kind:"intro", life:150, text:def.name });
+    if (round.key === "duo"){
+      const q = [Math.max(20, Math.min(W - 20, p[0] + 60)), p[1]];
+      boss = makeBoss(AUSTIN, Math.round(hp * 0.75), p);
+      const her = makeBoss(HEATHER, Math.round(hp * 0.6), q);
+      her.sp = 0.75; her.r = 23;
+      foes.push(boss, her);
+    } else {
+      boss = makeBoss(round, hp, p);
+      foes.push(boss);
+    }
+    fx.push({ kind:"intro", life:150, text:round.name });
     K.haptic("heavy");
+  }
+  function livingBosses(){ return foes.filter(function(f){ return f.kind === "boss" && !f.dead; }); }
+  // Beating Austin & Heather in Brazil flies everyone to Mauritius.
+  function toMauritius(){
+    stage = 1; foes = []; eshots = []; P.hp = P.max; P.inv = 120;
+    score += 500; bossT = 40 * 60;
+    fx.push({ kind:"stage", life:220, text:"CHEGAMOS EM MAURÍCIO!", sub:"+500 · hearts refilled · they followed us..." });
+    K.haptic("heavy"); K.bark();
   }
 
   function nearest(){
@@ -379,10 +491,20 @@
     if (f.kind === "boss" || Math.random() < 0.02 + 0.02 * stats.cox) pickups.push({ x:f.x, y:f.y, life:600 });
     if (score >= nextOffer && !offerIn && state === "run"){ offerIn = 30; nextOffer += OFFER_EVERY + bossCount * 150; }
     if (f.kind === "boss"){
-      fx.push({ kind:"felled", life:150, text:f.def.done });
-      boss = null; bossCount++; bossT = 55 * 60; offerIn = 110;
-      eshots = [];
-      K.haptic("heavy"); K.bark();
+      const rest = livingBosses();
+      if (rest.length){                                  // one of the pair is down; the other carries on
+        boss = rest[0];
+        fx.push({ kind:"word", x:f.x, y:f.y - 40, text:f.def.name + " is out!", life:60 });
+        K.haptic("heavy");
+      } else {
+        const round = BOSSES[bossCount % BOSSES.length];
+        fx.push({ kind:"felled", life:150, text:round.done });
+        boss = null; bossCount++; bossT = 55 * 60; offerIn = 110;
+        eshots = [];
+        K.haptic("heavy"); K.bark();
+        if (bossCount === 3) stageIn = 170;                // fly to Mauritius once the banner has faded
+        if (bossCount === 6) fx.push({ kind:"stage", life:220, text:"BUSINESS VACATION GARANTIDA", sub:"you beat them all. now survive the beach" });
+      }
     }
     if (score >= nextMode){
       modeT = MODE_LEN;
@@ -436,6 +558,12 @@
       eshots.push({ kind:"aviso", x:b.x, y:b.y, vx:Math.cos(a) * 2.4, vy:Math.sin(a) * 2.4, r:9, life:260 });
     } else if (b.def.key === "gerson"){        // a ring of rubber stamps: INDEFERIDO
       for (let i = 0; i < 8; i++){ const r = a + i * Math.PI / 4; eshots.push({ kind:"carimbo", x:b.x, y:b.y, vx:Math.cos(r) * 2, vy:Math.sin(r) * 2, r:9, life:240 }); }
+    } else if (b.def.key === "insulin"){       // denied prescriptions, in a fan
+      for (let i = -1; i <= 1; i++) eshots.push({ kind:"slip", x:b.x, y:b.y - 10, vx:Math.cos(a + i * 0.28) * 2.6, vy:Math.sin(a + i * 0.28) * 2.6, r:10, life:260 });
+    } else if (b.def.key === "austin"){        // skulls for the skull throne
+      for (let i = -2; i <= 2; i++) eshots.push({ kind:"skull", x:b.x, y:b.y - 10, vx:Math.cos(a + i * 0.22) * 2.5, vy:Math.sin(a + i * 0.22) * 2.5, r:8, life:260 });
+    } else if (b.def.key === "heather"){       // her hat, thrown like a frisbee
+      eshots.push({ kind:"hat", x:b.x, y:b.y - 14, vx:Math.cos(a) * 3.1, vy:Math.sin(a) * 3.1, r:10, life:220 });
     } else {
       for (let i = -1; i <= 1; i++)
         eshots.push({ kind:"invite", x:b.x, y:b.y, vx:Math.cos(a + i * 0.32) * 2.4, vy:Math.sin(a + i * 0.32) * 2.4, r:9, life:260 });
@@ -502,7 +630,7 @@
     // attack
     atkT--;
     if (who === "keyla"){
-      if (atkT <= 0){ const n = (boss && !boss.dead && (++volley % 2)) ? boss : nearest(); if (n) fireBone(n); atkT = Math.max(15, 40 - score / 280) * stats.rate; }
+      if (atkT <= 0){ const lb = livingBosses()[0], n = (lb && (++volley % 2)) ? lb : nearest(); if (n) fireBone(n); atkT = Math.max(15, 40 - score / 280) * stats.rate; }
     } else if (modeT > 0){
       if (atkT <= 0){ const n = nearest(); if (n) fireTalk(n); atkT = Math.max(4, 7 * stats.rate); }
     } else if (atkT <= 0){
@@ -510,7 +638,7 @@
     }
 
     // spawns (lighter while a boss is around)
-    if (!boss && --bossT <= 0) spawnBoss();
+    if (!livingBosses().length && --bossT <= 0) spawnBoss();
     spawnT--;
     if (spawnT <= 0 && foes.length < 95){
       spawn();
@@ -553,7 +681,9 @@
       }
       if (f.kind === "boss"){
         if (d < 120) move = f.sp * 0.35;                      // keeps a little distance to throw things
-        if (--f.fire <= 0){ bossFire(f); f.fire = f.def.key === "taize" ? 115 : 150; }
+        if (--f.fire <= 0){ bossFire(f); f.fire = (f.def.every || 150) - stage * 15; }
+        if (--f.sayT <= 0 && f.def.lines && f.def.lines.length){ f.say = { text:pick(f.def.lines), life:150 }; f.sayT = 260 + Math.random() * 200; }
+        if (f.say && --f.say.life <= 0) f.say = null;
         if (f.touch > 0) f.touch--;
         f.shown += (f.hp - f.shown) * 0.05;
       }
@@ -571,6 +701,7 @@
       }
     }
     foes = foes.filter(function(f){ return !f.dead; });
+    if (stageIn > 0 && --stageIn === 0) toMauritius();
 
     if (P.inv > 0) P.inv--;
     if (modeT > 0) modeT--;
@@ -583,11 +714,37 @@
     fx = fx.filter(function(e){ return e.life > 0; });
   }
 
+  // Mauritius: sand, the lagoon along the top, shells and a couple of palms
+  function drawBeach(){
+    ctx.fillStyle = "#F3DDB0"; ctx.fillRect(0, 0, W, H);
+    const sea = TOP + 20, g = ctx.createLinearGradient(0, 0, 0, sea);
+    g.addColorStop(0, "#3FB5B0"); g.addColorStop(1, "#9FDCCF");
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, sea);
+    ctx.fillStyle = "#FBF6F9";
+    ctx.beginPath(); ctx.moveTo(0, sea);
+    for (let x = 0; x <= W; x += 12) ctx.lineTo(x, sea + Math.sin(x * 0.05 + t * 0.05) * 3 + 3);
+    ctx.lineTo(W, sea - 4); ctx.lineTo(0, sea - 4); ctx.fill();
+    for (let i = 0; i < 26; i++){
+      const x = (i * 97.3) % W, y = sea + 30 + ((i * 151.7) % (H - sea - 40));
+      if (i % 3 === 0){ ctx.fillStyle = "#F7A8C4"; circ(x, y, 3); }
+      else { ctx.fillStyle = "#E8CB92"; ctx.beginPath(); ctx.ellipse(x, y, 7, 2.6, 0, 0, 7); ctx.fill(); }
+    }
+    [[22, H - BOT - 10], [W - 26, sea + 120]].forEach(function(p){
+      ctx.strokeStyle = "#8C5C38"; ctx.lineWidth = 6; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.moveTo(p[0], p[1]); ctx.quadraticCurveTo(p[0] - 6, p[1] - 40, p[0] + 4, p[1] - 70); ctx.stroke();
+      ctx.fillStyle = "#6FA488";
+      [-2.6, -2, -1.2, -0.5, 0.2].forEach(function(a){ ctx.save(); ctx.translate(p[0] + 4, p[1] - 70); ctx.rotate(a + Math.sin(t * 0.03) * 0.05); ctx.beginPath(); ctx.ellipse(16, 0, 16, 5, 0, 0, 7); ctx.fill(); ctx.restore(); });
+    });
+  }
+
   function draw(){
     ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = "#F6E7EF"; ctx.fillRect(0, 0, W, H);
-    ctx.fillStyle = "#EAD5E1";
-    for (let x = 30; x < W; x += 60) for (let y = 30; y < H; y += 60){ ctx.beginPath(); ctx.arc(x, y, 1.6, 0, 7); ctx.fill(); }
+    if (stage === 1) drawBeach();
+    else {
+      ctx.fillStyle = "#F6E7EF"; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = "#EAD5E1";
+      for (let x = 30; x < W; x += 60) for (let y = 30; y < H; y += 60){ ctx.beginPath(); ctx.arc(x, y, 1.6, 0, 7); ctx.fill(); }
+    }
 
     if (state === "run" || state === "over" || state === "upgrade"){
       for (const c of pickups) drawCoxinha(c);
@@ -595,12 +752,15 @@
         const face = P.x >= f.x ? 1 : -1;
         const lx = (P.x - f.x) / 200, ly = (P.y - f.y) / 200;
         if (f.kind === "pato") drawPato(f.x, f.y, face, f.flash > 0);
+        else if (f.kind === "crab") drawCrab(f, face);
+        else if (f.kind === "macaco") drawMacaco(f, face);
         else if (f.kind === "dog") drawStray(f, face);
         else if (f.kind === "starer"){
           drawPerson(f.x, f.y - 2, 1, f.look, lx, ly, f.pause <= 0, f.seed, f.flash > 0);
           if (f.pause > 0) drawStareBubble(f.x, f.y - 36);
         } else if (f.kind === "boss"){
           drawPerson(f.x, f.y - 4, 1.65, f.def.look, lx, ly, true, 1, f.flash > 0);
+          if (f.say) drawSay(f.say.text, f.x, f.y - 70);
         }
       }
 
@@ -614,7 +774,10 @@
         }
       }
 
-      for (const s of eshots){ s.kind === "aviso" ? drawAviso(s) : s.kind === "carimbo" ? drawCarimbo(s) : drawInvite(s); }
+      for (const s of eshots){
+        if (s.kind === "carimbo") drawCarimbo(s); else if (s.kind === "slip") drawSlip(s); else if (s.kind === "skull") drawSkull(s);
+        else if (s.kind === "hat") drawHat(s); else if (s.kind === "aviso") drawAviso(s); else drawInvite(s);
+      }
 
       const pum = who === "keyla" && modeT > 0;
       if (modeT > 0 && !(modeT < 120 && Math.floor(t / 5) % 2 === 0)){
@@ -659,14 +822,18 @@
       }
 
       // the boss bar, bottom of the screen, where it belongs
-      if (boss && !boss.dead){
+      const bs = foes.filter(function(f){ return f.kind === "boss"; });
+      if (bs.length && livingBosses().length){
         const x0 = W * 0.1, w = W * 0.8, y0 = H - BOT + 22;
+        const round = BOSSES[bossCount % BOSSES.length];
+        let hp = 0, shown = 0, max = 0;
+        bs.forEach(function(b){ hp += Math.max(0, b.dead ? 0 : b.hp); shown += Math.max(0, b.dead ? 0 : b.shown); max += b.maxhp; });
         ctx.textAlign = "left"; ctx.fillStyle = "#33243C";
         ctx.font = "500 16px Fraunces, Georgia, serif";
-        ctx.fillText(boss.def.name, x0, y0 - 9);
+        ctx.fillText(round.name, x0, y0 - 9);
         ctx.fillStyle = "rgba(51,36,60,.24)"; ctx.fillRect(x0, y0, w, 7);
-        ctx.fillStyle = "#EFC7A2"; ctx.fillRect(x0, y0, w * Math.max(0, boss.shown) / boss.maxhp, 7);
-        ctx.fillStyle = "#A92E3C"; ctx.fillRect(x0, y0, w * Math.max(0, boss.hp) / boss.maxhp, 7);
+        ctx.fillStyle = "#EFC7A2"; ctx.fillRect(x0, y0, w * shown / max, 7);
+        ctx.fillStyle = "#A92E3C"; ctx.fillRect(x0, y0, w * hp / max, 7);
         ctx.strokeStyle = "rgba(51,36,60,.55)"; ctx.lineWidth = 1; ctx.strokeRect(x0 - 0.5, y0 - 0.5, w + 1, 8);
       }
 
@@ -688,6 +855,12 @@
           ctx.textAlign = "center"; ctx.fillStyle = "rgba(233,196,122," + a + ")";
           ctx.font = "500 " + Math.min(32, W / 14) + "px Fraunces, Georgia, serif";
           ctx.fillText(e.text, W / 2, H / 2 + 4);
+        } else if (e.kind === "stage"){
+          const a = Math.min(1, e.life / 30, (220 - e.life) / 20);
+          ctx.fillStyle = "rgba(44,140,124," + a * 0.85 + ")"; ctx.fillRect(0, H / 2 - 60, W, 100);
+          ctx.textAlign = "center"; ctx.fillStyle = "rgba(255,248,238," + a + ")";
+          ctx.font = "600 " + Math.min(30, W / 13) + "px Karla, sans-serif"; ctx.fillText(e.text, W / 2, H / 2 - 12);
+          ctx.font = "500 13px Karla, sans-serif"; ctx.fillText(e.sub, W / 2, H / 2 + 16);
         } else if (e.kind === "word"){
           ctx.textAlign = "center"; ctx.fillStyle = "rgba(44,140,124," + Math.min(1, e.life / 20) + ")";
           ctx.font = "700 15px Karla, sans-serif"; ctx.fillText(e.text, e.x, e.y - (50 - e.life) * 0.4);
