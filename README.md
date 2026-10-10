@@ -1,6 +1,6 @@
 # Business App (Plan B: Mauritius)
 
-Our Plan B as a little Android app, called **Business App** on the phone (it's a business vacation), with a briefcase icon. It works offline (everything is inside the app) and asks for no permissions: the camera, files, contacts, calendar and maps are reached through their own apps.
+Our Plan B as a little Android app, called **Business App** on the phone (it's a business vacation), with a briefcase icon. It works offline (everything is inside the app) and never asks for permissions: the camera, files, contacts, calendar and maps are reached through their own apps, and the fingerprint lock uses a permission Android grants silently.
 
 **Screens** (tab bar at the bottom):
 

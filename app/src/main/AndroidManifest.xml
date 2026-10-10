@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- No permissions: the plan ships inside the app and works offline. The camera, files, contacts,
-     calendar and maps are reached through their own apps, which ask nothing of this app. -->
+<!-- The plan ships inside the app and works offline. The camera, files, contacts, calendar and maps
+     are reached through their own apps, which ask nothing of this app. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Lets the documents lock show the phone's fingerprint / PIN prompt. Granted at install, never asked. -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"

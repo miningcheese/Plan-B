@@ -220,24 +220,38 @@ class MainActivity : Activity() {
             return
         }
         if (Build.VERSION.SDK_INT >= 29) {
-            val builder = BiometricPrompt.Builder(this)
-                .setTitle("Unlock documents")
-                .setSubtitle("Her papers stay behind the phone's lock")
-            if (Build.VERSION.SDK_INT >= 30) {
-                builder.setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
-            } else {
-                @Suppress("DEPRECATION")
-                builder.setDeviceCredentialAllowed(true)
+            try {
+                showBiometricPrompt()
+            } catch (e: Exception) {
+                // Some phones refuse the fingerprint prompt; the phone's own PIN screen still works.
+                confirmWithScreenLock(keyguard)
             }
-            builder.build().authenticate(CancellationSignal(), mainExecutor, object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) = setUnlocked(true, secure = true)
-                override fun onAuthenticationError(errorCode: Int, errString: CharSequence) = setUnlocked(false, secure = true)
-            })
+        } else {
+            confirmWithScreenLock(keyguard)
+        }
+    }
+
+    @android.annotation.TargetApi(29)
+    private fun showBiometricPrompt() {
+        val builder = BiometricPrompt.Builder(this)
+            .setTitle("Unlock documents")
+            .setSubtitle("Her papers stay behind the phone's lock")
+        if (Build.VERSION.SDK_INT >= 30) {
+            builder.setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
         } else {
             @Suppress("DEPRECATION")
-            val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Her papers stay behind the phone's lock")
-            if (intent == null) setUnlocked(true, secure = false) else launchForResult(intent, REQ_UNLOCK, "Couldn't open the phone's lock")
+            builder.setDeviceCredentialAllowed(true)
         }
+        builder.build().authenticate(CancellationSignal(), mainExecutor, object : BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) = setUnlocked(true, secure = true)
+            override fun onAuthenticationError(errorCode: Int, errString: CharSequence) = setUnlocked(false, secure = true)
+        })
+    }
+
+    private fun confirmWithScreenLock(keyguard: KeyguardManager) {
+        @Suppress("DEPRECATION")
+        val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Her papers stay behind the phone's lock")
+        if (intent == null) setUnlocked(true, secure = false) else launchForResult(intent, REQ_UNLOCK, "Couldn't open the phone's lock")
     }
 
     private fun setUnlocked(on: Boolean, secure: Boolean) {
