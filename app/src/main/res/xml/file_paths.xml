@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- What FileProvider may hand to other apps: the camera's photo, the export zip, and a document she opens elsewhere. -->
+<paths>
+    <cache-path name="camera" path="camera/" />
+    <cache-path name="export" path="export/" />
+    <files-path name="docs" path="docs/" />
+</paths>

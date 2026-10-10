@@ -36,3 +36,8 @@ android {
         jvmTarget = "17"
     }
 }
+
+dependencies {
+    // FileProvider: hands the camera a file to write the photo into, and shares the export zip.
+    implementation("androidx.core:core:1.13.1")
+}

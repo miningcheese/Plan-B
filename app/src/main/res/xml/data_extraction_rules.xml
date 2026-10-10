@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Android 12+. Her documents never leave the phone on their own, not in backups and not to a new phone. -->
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="file" path="docs/" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="file" path="docs/" />
+    </device-transfer>
+</data-extraction-rules>

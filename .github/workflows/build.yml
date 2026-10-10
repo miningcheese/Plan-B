@@ -33,6 +33,7 @@ jobs:
 
       # A release gives a direct download: Releases → latest → PlanB-N.apk
       - name: Publish release
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
           NOTES: ${{ github.event.head_commit.message }}
