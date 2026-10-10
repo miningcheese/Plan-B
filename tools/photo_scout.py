@@ -8,6 +8,7 @@ import json
 import os
 import re
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -21,10 +22,21 @@ QUERIES = [
 OK_LICENSES = ("CC BY", "CC0", "Public domain", "CC-BY", "PD")
 
 
+def fetch(url):
+    """Downloads with retries: Wikimedia answers 429 when we go too fast."""
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+                return r.read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or attempt == 5:
+                raise
+            time.sleep(10 * (attempt + 1))
+
+
 def get(params):
     url = API + "?" + urllib.parse.urlencode({**params, "format": "json", "formatversion": "2"})
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
-        return json.load(r)
+    return json.loads(fetch(url))
 
 
 def text(em, key):
@@ -48,8 +60,7 @@ def main():
                 continue
             name = f"c{qi:02d}-{start + len(meta):03d}.jpg"
             try:
-                with urllib.request.urlopen(urllib.request.Request(ii["thumburl"], headers=UA), timeout=60) as img:
-                    data = img.read()
+                data = fetch(ii["thumburl"])
             except Exception as e:  # skip what won't download
                 print("skip", p["title"], e)
                 continue
@@ -58,7 +69,7 @@ def main():
                          "license": lic, "licenseUrl": text(em, "LicenseUrl"), "page": ii.get("descriptionurl"),
                          "desc": text(em, "ImageDescription")[:240], "size": [ii.get("width"), ii.get("height")]})
             kept += 1
-            time.sleep(0.5)
+            time.sleep(2)
             if kept >= 6:
                 break
         print(q, kept)
