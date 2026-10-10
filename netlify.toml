@@ -1,0 +1,16 @@
+# Netlify builds the web version from this repo (or drag the built web/ folder onto app.netlify.com/drop).
+[build]
+  command = "python3 tools/build_web.py"
+  publish = "web"
+
+# Always fetch the latest offline-cache script, so updates reach the phone.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+    Referrer-Policy = "no-referrer"

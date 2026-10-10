@@ -30,6 +30,16 @@ Ticks on the meter and the to-do list stay saved on the phone, also across updat
 - The phone side (clipboard, haptics, email, calendar, the lock, camera and files, export, contacts, back button, edge-to-edge): `MainActivity.kt`; document storage: `DocStore.kt` (both in `app/src/main/java/com/idklmao/planb/`).
 - Open `index.html` in a desktop browser to try changes; everything works there except the phone-only bits.
 
+## On an iPhone: the web version
+
+The same app runs as a website, and on an iPhone it installs like an app: open the site in **Safari**, tap **Share → Add to Home Screen**. It gets the briefcase icon, opens full screen and works offline after the first visit.
+
+- `python3 tools/build_web.py` builds it into `web/`: the app's screens plus `web-src/` (a browser stand-in for the Android side, the icon, and the offline cache).
+- **Netlify, quickest:** every release on GitHub also has `BusinessApp-web-N.zip`. Unzip it and drag the folder onto [app.netlify.com/drop](https://app.netlify.com/drop).
+- **Netlify, automatic:** in Netlify, "Add new site → Import from GitHub" and pick this repo; `netlify.toml` already has the build settings, so every push updates the site.
+- Differences on iPhone: no vibration, contacts are typed in (no picking from the phone's contacts), no fingerprint lock on Documents (the phone's own lock protects them), reminders come as calendar files to tap, and the export opens the share sheet (Save to Files, Google Drive…). Documents are kept in the browser's storage on her phone only.
+- The site's address is public but not listed anywhere (search engines are told to stay away). Her documents never leave her phone; the plan itself is readable by anyone who has the link.
+
 ## Getting it onto a phone
 
 1. Every push runs **Build APK** and publishes a release, **Business App build N** (Releases, on the right of the repo page).

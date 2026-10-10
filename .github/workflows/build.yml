@@ -25,6 +25,12 @@ jobs:
           ./gradlew --no-daemon assembleDebug
           cp app/build/outputs/apk/debug/app-debug.apk "BusinessApp-${{ github.run_number }}.apk"
 
+      # The same app as a website (for the iPhone): unzip and drag the folder onto app.netlify.com/drop
+      - name: Build the web version
+        run: |
+          python3 tools/build_web.py
+          (cd web && zip -qr "../BusinessApp-web-${{ github.run_number }}.zip" .)
+
       - uses: actions/upload-artifact@v4
         with:
           name: business-app-${{ github.run_number }}
@@ -38,7 +44,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           NOTES: ${{ github.event.head_commit.message }}
         run: |
-          gh release create "build-${{ github.run_number }}" "BusinessApp-${{ github.run_number }}.apk" \
+          gh release create "build-${{ github.run_number }}" "BusinessApp-${{ github.run_number }}.apk" "BusinessApp-web-${{ github.run_number }}.zip" \
             --target "${{ github.sha }}" \
             --title "Business App build ${{ github.run_number }}" \
             --notes "${NOTES:-Manual build}" \
