@@ -59,6 +59,13 @@
       <article class="place card"><span class="area">north coast</span><h3>Grand Baie</h3><ul class="pc"><li>Restaurants, shops, clinics, things to do</li><li>Lots of expats</li><li class="c">Priciest of the three</li><li class="c">Traffic in high season</li></ul></article>
     </div>
 
+    <h2 class="h">Get the vibe</h2>
+    <p class="sub">The city and the beaches. Tap a photo to see it big.</p>
+    <h3 class="h3 vibe-h">The city</h3>
+    <div class="rail photos" id="photos-city"></div>
+    <h3 class="h3 vibe-h">The beaches</h3>
+    <div class="rail photos" id="photos-beach"></div>
+
     <h2 class="h">Why Mauritius is a good idea ♥</h2>
     <div class="rail why">
       <div class="reason card"><strong>Easy to get in</strong><p>No visa for us, 90 days on arrival.</p></div>
@@ -71,6 +78,12 @@
       <div class="reason card"><strong>Home is a call away</strong><p>Seven hours ahead of Brazil, so morning there is a fine time to call your mom.</p></div>
     </div>
     <p class="dodo">i sure hope they have insulin</p>
+
+    <h2 class="h">Arcade</h2>
+    <div class="arcade">
+      <button type="button" class="arcade-card card" id="arcade-surv"><span class="ac-name">Galela Survivors</span><span class="ac-sub">Keyla or Babiela vs the ducks, the strays and Taíze</span></button>
+      <button type="button" class="arcade-card card run" id="arcade-run"><span class="ac-name">Kê-Kê Run</span><span class="ac-sub">jump the crate, dodge the vet, grab the pêmios</span></button>
+    </div>
 
     <footer class="close">
       <p>this is actually pretty cool, feels like some apocalyptic game or smth lmao</p>
@@ -385,7 +398,7 @@
 </div>
 
 <!-- One page full screen, pinch to zoom -->
-<div class="zoom" id="zoom" hidden><img id="zoom-img" alt=""><button type="button" class="iconbtn close light" id="zoom-close" aria-label="Close"></button></div>
+<div class="zoom" id="zoom" hidden><img id="zoom-img" alt=""><div class="zoom-cap" id="zoom-cap" hidden><strong id="zoom-title"></strong><span id="zoom-credit"></span></div><button type="button" class="iconbtn close light" id="zoom-close" aria-label="Close"></button></div>
 
 <!-- Add or edit a contact -->
 <div class="sheet form" id="cform" role="dialog" aria-modal="true" aria-labelledby="cf-title" hidden>
@@ -417,6 +430,23 @@
   <div class="sheet-actions"><button type="button" class="btn" id="ask-cancel">Cancel</button><button type="button" class="btn primary" id="ask-ok">Add</button></div>
 </div>
 
+<!-- Galela Survivors (survivors.js) -->
+<div class="game surv" id="surv" hidden>
+  <canvas id="surv-cv"></canvas>
+  <button type="button" class="iconbtn pause" id="surv-pause" aria-label="Pause"></button>
+  <button type="button" class="iconbtn close" id="surv-close" aria-label="Close the game"></button>
+  <div class="surv-panel" id="surv-lvl" hidden>
+    <h3 id="surv-lvl-n">Level up!</h3>
+    <p class="fine">Pick one</p>
+    <div class="surv-cards" id="surv-cards"></div>
+  </div>
+  <div class="surv-panel" id="surv-end" hidden>
+    <h3 id="surv-end-title"></h3>
+    <p class="fine" id="surv-end-line"></p>
+    <div class="sheet-actions"><button type="button" class="btn" id="surv-quit">Leave</button><button type="button" class="btn primary" id="surv-again">Play again</button></div>
+  </div>
+</div>
+
 <!-- Kê-Kê Run (tap the duck on the beach five times) -->
 <div class="game" id="game" hidden>
   <canvas id="game-cv"></canvas>
@@ -435,6 +465,8 @@
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<script src="photos.js"></script>
 <script src="app.js"></script>
+<script src="survivors.js"></script>
 </body>
 </html>

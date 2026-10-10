@@ -790,7 +790,13 @@
   // Pinch to zoom on one page
   var zoomImg = $('zoom-img'), zs = 1, zx = 0, zy = 0, pinch = null, pan = null, lastTap = 0;
   function zoomApply(){ zoomImg.style.transform = 'translate(' + zx + 'px,' + zy + 'px) scale(' + zs + ')'; }
-  function openZoom(src){ zoomImg.src = src; zs = 1; zx = zy = 0; zoomApply(); openLayer($('zoom'), null, false); }
+  // cap: { title, credit } for a photo of Mauritius; none for her documents
+  function openZoom(src, cap){
+    zoomImg.src = src; zs = 1; zx = zy = 0; zoomApply();
+    $('zoom-cap').hidden = !cap;
+    if (cap){ $('zoom-title').textContent = cap.title; $('zoom-credit').textContent = cap.credit; }
+    openLayer($('zoom'), null, false);
+  }
   $('zoom-close').addEventListener('click', function(){ closeLayer($('zoom')); });
   var zoomEl = $('zoom');
   zoomEl.addEventListener('touchstart', function(e){
@@ -1058,6 +1064,31 @@
       drawPato(x + 17, y + 12, 1);
     }
   }
+
+  /* ---- Get the vibe: photos of Mauritius (assets/photos, from Wikimedia Commons; credits in photos.js) ---- */
+  (window.PLANB_PHOTOS || []).forEach(function(p){
+    var box = $(p.group === 'city' ? 'photos-city' : 'photos-beach'); if (!box) return;
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'photo card';
+    b.innerHTML = '<img alt="" loading="lazy"><span class="ph-cap"><strong></strong><span></span></span>';
+    b.querySelector('img').src = 'photos/' + p.file; b.querySelector('img').alt = p.title;
+    b.querySelector('strong').textContent = p.title; b.querySelector('.ph-cap span').textContent = p.where;
+    b.addEventListener('click', function(){
+      haptic('tick');
+      openZoom('photos/' + p.file, { title:p.title + ' · ' + p.where, credit:'Photo: ' + p.author + ' · ' + p.license + ' · Wikimedia Commons' });
+    });
+    box.appendChild(b);
+  });
+
+  /* ---- shared with survivors.js (Galela Survivors) ---- */
+  var openSurvivors = null;
+  window.PlanBKit = {
+    drawGabs:drawGabs, drawKeyla:drawKeyla, drawPato:drawPato,
+    setCtx:function(c){ ctx = c; }, setGameOpen:function(v){ gameOpen = v; },
+    openLayer:openLayer, closeLayer:closeLayer, haptic:haptic, bark:bark,
+    onOpenSurvivors:function(fn){ openSurvivors = fn; }
+  };
+  $('arcade-surv').addEventListener('click', function(){ if (openSurvivors) openSurvivors(); });
+  $('arcade-run').addEventListener('click', function(){ openGame(); });
 
   /* ---- start ---- */
   update(false);

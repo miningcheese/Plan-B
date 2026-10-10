@@ -14,7 +14,13 @@ Our Plan B as a little Android app, called **Business App** on the phone (it's a
   - **Contacts**: tap to call, Signal, WhatsApp or email; **+** adds one (or picks it from the phone's contacts). Comes with the Brazilian embassy in Pretoria (it covers Mauritius), the honorary consulate in Port Louis and Mauritius pet import.
 - **To-do**: stuff we do now, with progress.
 
-**Kê-Kê:** tap Keyla on any drawing and she hops, says one of her lines and plays one of the voice clips (`assets/voice/`). Home has a line of the day. Tap the duck on the beach five times for **Kê-Kê Run**.
+**Kê-Kê:** tap Keyla on any drawing and she hops, says one of her lines and plays one of the voice clips (`assets/voice/`). Home has a line of the day.
+
+**Get the vibe** (Home): photos of Mauritius, the city and the beaches. Tap one to see it full screen, with its author and license. They're from Wikimedia Commons under free licenses; `assets/photos.js` lists each with its source page.
+
+**Arcade** (bottom of Home):
+- **Galela Survivors** (`assets/survivors.js`), from the Very Serious Website for Business: pick Keyla (throws bones) or Babiela (slaps), drag anywhere to walk, survive the ducks, strays, starers and the bosses (Taíze, Lauren and now Seu Gérson do Cartório). Every 1000 points: PUM-PUM-SEM-VERGONHA or SHITTALK MODE. New in the app: full screen, the same speed on any screen, an upgrade every few hundred points (three choices, including the other one joining as a sidekick, new havaianas and coxinha luck), coxinhas that heal, pause, haptics and her voice.
+- **Kê-Kê Run**: jump the crate, dodge the vet, grab pêmios and ducks. Also opens with five taps on the duck on the beach.
 
 Ticks on the meter and the to-do list stay saved on the phone, also across updates. The back button returns to Home before it leaves the app.
 
