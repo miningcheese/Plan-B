@@ -27,6 +27,12 @@
     <h1 class="big-title">Plan B: <em>Mauritius</em></h1>
     <p class="lede">This plan is for business only. <span class="hand">business vacation.</span></p>
 
+    <button type="button" class="kekeday card" id="kekeday">
+      <span class="who">Kê-Kê de hoje</span>
+      <span class="keke" id="kekeday-line"></span>
+      <span class="kekeday-tap">tap to hear her ♥</span>
+    </button>
+
     <button type="button" class="status card" id="status" data-go="meter">
       <span class="status-top"><span class="status-dot"></span><span class="status-name" id="status-name">Chill: we stay</span><span class="chev" aria-hidden="true"></span></span>
       <span class="keke" id="status-keke"></span>
@@ -216,54 +222,100 @@
     </div>
   </section>
 
-  <!-- ============ KEYLA ============ -->
-  <section class="screen s-violet" id="keyla" data-title="Keyla" aria-label="Keyla">
-    <h1 class="big-title">Chi-chi é Vião galela é de pá-pá?</h1>
-    <p class="sub">mauritius is kinda up tight as shit when it comes to importing caninos but I have thought of routes we should check those soon thougheverbeit</p>
+  <!-- ============ PAPERS ============ -->
+  <section class="screen s-violet" id="papers" data-title="Papers" aria-label="Papers">
+    <h1 class="big-title">Papers</h1>
+    <p class="sub">Her documents, Keyla's kit and the people we'd call.</p>
 
-    <figure class="polaroid"><img src="keyla.jpg" alt="Keyla lying on the floor in her black hoodie, tongue out"><figcaption>head of security, da facção</figcaption></figure>
-
-    <div class="kbody card">
-      <h3>Keyla's ready-to-fly kit</h3>
-      <ul>
-        <li><strong>The slow part:</strong> a rabies blood test (FAVN or RFFIT) at least 4 weeks after her rabies shot. She can fly from 3 to 12 months after the blood draw, so we redo it every year and she stays ready.</li>
-        <li>ISO microchip, scanned by the vet when the blood is drawn.</li>
-        <li>Spayed, plus distemper, hepatitis, leptospirosis and parvo shots.</li>
-        <li>Close to the trip: an Ehrlichia test within 45 days, a Brucella test, and a vet health certificate.</li>
-        <li>She travels as manifest cargo (never in the cabin), a Mauritius pet broker meets her, then at least 5 days of quarantine at Réduit.</li>
-        <li>She will protest the crate. It is what it is, so we make it SUPER comfy: pink, a pillow, her toys.</li>
-        <li>Her papers say SRD (mixed breed). A dog DNA test settles it if Mauritius asks, since mixes of some breeds (Rottweiler included) aren't allowed.</li>
-      </ul>
-      <p class="fine">If red hits before her permit is in hand: all three of us go to the farm and fly together when it lands.</p>
+    <div class="seg seg3" role="tablist" aria-label="Papers parts">
+      <button type="button" role="tab" class="is-on" data-seg="docs" aria-selected="true">Documents</button>
+      <button type="button" role="tab" data-seg="keyla" aria-selected="false">Keyla</button>
+      <button type="button" role="tab" data-seg="contacts" aria-selected="false">Contacts</button>
     </div>
 
-    <div class="mail card">
-      <div class="mail-head"><h3>The email to Mauritius</h3><span class="fine">Opens in your email app, ready to send. Fill in the [brackets] there first.</span></div>
-      <button type="button" class="btn primary wide" id="send-mail">Write it in my email app</button>
-      <div class="mrow"><span class="mlab">To</span><span class="mval" id="m-to">petimport@govmu.org</span><button type="button" class="copy" data-copy="m-to">Copy</button></div>
-      <div class="mrow"><span class="mlab">Subject</span><span class="mval" id="m-subj">Import permit enquiry: pet dog from Brazil</span><button type="button" class="copy" data-copy="m-subj">Copy</button></div>
-      <details class="mdetails">
-        <summary><span>Show the email</span><button type="button" class="copy" data-copy="m-body">Copy</button></summary>
-<div class="mbody" id="m-body">Dear Livestock and Veterinary Division,
-
-We are planning a possible move from Brazil to Mauritius and would like to bring our dog with us. Before we start her paperwork, could you please help us with a few questions?
-
-About the dog: female, mixed breed (SRD), [age] years old, ISO microchip [number], spayed: [yes/no].
-
-1. Are dogs from Brazil currently eligible for import, and would she need 5 days or one month of quarantine at Réduit?
-2. How far in advance should we apply for the import permit, and how long does a permit stay valid once issued? Can we apply before we have a confirmed travel date?
-3. Which laboratories in Brazil are approved for the rabies antibody test (FAVN or RFFIT)?
-4. Is a cargo transit through Johannesburg or Dubai acceptable?
-5. What documentation do you require for a mixed-breed dog?
-6. Is there any provision for emotional support animals, or must all dogs travel as manifest cargo?
-
-Thank you very much for your help.
-
-Kind regards,
-[Your names]
-[Phone / WhatsApp]</div>
-      </details>
+    <div class="seg-panel is-on" id="docs">
+      <div class="lockcard card" id="docs-locked">
+        <span class="lock-ic" aria-hidden="true"></span>
+        <h3>Documents are locked</h3>
+        <p class="fine">Photos of her passport, Keyla's papers and the rest stay inside this app, behind the phone's fingerprint or PIN.</p>
+        <button type="button" class="btn primary" id="docs-unlock">Unlock</button>
+      </div>
+      <div id="docs-open" hidden>
+        <div class="docs-top">
+          <span class="docs-count" id="docs-count">0 of 0 added</span>
+          <button type="button" class="btn small" id="docs-lock">Lock</button>
+        </div>
+        <p class="fine warn" id="docs-insecure" hidden>This phone has no screen lock, so anyone holding it can open these. Set one in the phone's Settings → Security.</p>
+        <h3 class="h3">Hers</h3>
+        <div class="doclist card" id="doclist-her"></div>
+        <h3 class="h3">Keyla</h3>
+        <div class="flycard card" id="flycard-docs"></div>
+        <div class="doclist card" id="doclist-keyla"></div>
+        <button type="button" class="btn wide" id="doc-add">+ Add another document</button>
+        <div class="export card">
+          <h3>Keep a copy somewhere else</h3>
+          <p class="fine">If the phone is lost, so are these. Export them all as one zip.</p>
+          <button type="button" class="btn primary wide" id="export-drive">Save to Google Drive</button>
+          <button type="button" class="btn wide" id="export-save">Save to phone, SD card or USB</button>
+        </div>
+      </div>
     </div>
+
+    <div class="seg-panel" id="keyla" hidden>
+      <div class="flycard card" id="flycard-keyla"></div>
+  <h2 class="h keyla-h">Chi-chi é Vião galela é de pá-pá?</h2>
+      <p class="sub">mauritius is kinda up tight as shit when it comes to importing caninos but I have thought of routes we should check those soon thougheverbeit</p>
+
+      <figure class="polaroid"><img src="keyla.jpg" alt="Keyla lying on the floor in her black hoodie, tongue out"><figcaption>head of security, da facção</figcaption></figure>
+
+      <div class="kbody card">
+        <h3>Keyla's ready-to-fly kit</h3>
+        <ul>
+          <li><strong>The slow part:</strong> a rabies blood test (FAVN or RFFIT) at least 4 weeks after her rabies shot. She can fly from 3 to 12 months after the blood draw, so we redo it every year and she stays ready.</li>
+          <li>ISO microchip, scanned by the vet when the blood is drawn.</li>
+          <li>Spayed, plus distemper, hepatitis, leptospirosis and parvo shots.</li>
+          <li>Close to the trip: an Ehrlichia test within 45 days, a Brucella test, and a vet health certificate.</li>
+          <li>She travels as manifest cargo (never in the cabin), a Mauritius pet broker meets her, then at least 5 days of quarantine at Réduit.</li>
+          <li>She will protest the crate. It is what it is, so we make it SUPER comfy: pink, a pillow, her toys.</li>
+          <li>Her papers say SRD (mixed breed). A dog DNA test settles it if Mauritius asks, since mixes of some breeds (Rottweiler included) aren't allowed.</li>
+        </ul>
+        <p class="fine">If red hits before her permit is in hand: all three of us go to the farm and fly together when it lands.</p>
+      </div>
+
+      <div class="mail card">
+        <div class="mail-head"><h3>The email to Mauritius</h3><span class="fine">Opens in your email app, ready to send. Fill in the [brackets] there first.</span></div>
+        <button type="button" class="btn primary wide" id="send-mail">Write it in my email app</button>
+        <div class="mrow"><span class="mlab">To</span><span class="mval" id="m-to">petimport@govmu.org</span><button type="button" class="copy" data-copy="m-to">Copy</button></div>
+        <div class="mrow"><span class="mlab">Subject</span><span class="mval" id="m-subj">Import permit enquiry: pet dog from Brazil</span><button type="button" class="copy" data-copy="m-subj">Copy</button></div>
+        <details class="mdetails">
+          <summary><span>Show the email</span><button type="button" class="copy" data-copy="m-body">Copy</button></summary>
+  <div class="mbody" id="m-body">Dear Livestock and Veterinary Division,
+
+  We are planning a possible move from Brazil to Mauritius and would like to bring our dog with us. Before we start her paperwork, could you please help us with a few questions?
+
+  About the dog: female, mixed breed (SRD), [age] years old, ISO microchip [number], spayed: [yes/no].
+
+  1. Are dogs from Brazil currently eligible for import, and would she need 5 days or one month of quarantine at Réduit?
+  2. How far in advance should we apply for the import permit, and how long does a permit stay valid once issued? Can we apply before we have a confirmed travel date?
+  3. Which laboratories in Brazil are approved for the rabies antibody test (FAVN or RFFIT)?
+  4. Is a cargo transit through Johannesburg or Dubai acceptable?
+  5. What documentation do you require for a mixed-breed dog?
+  6. Is there any provision for emotional support animals, or must all dogs travel as manifest cargo?
+
+  Thank you very much for your help.
+
+  Kind regards,
+  [Your names]
+  [Phone / WhatsApp]</div>
+        </details>
+      </div>
+    </div>
+
+    <div class="seg-panel" id="contacts" hidden>
+      <div class="contactlist" id="contactlist"></div>
+      <p class="fine center">Tap a contact to call, WhatsApp or email.</p>
+    </div>
+    <button type="button" class="fab" id="contact-add" aria-label="Add a contact" hidden></button>
   </section>
 
   <!-- ============ TO-DO ============ -->
@@ -311,11 +363,69 @@ Kind regards,
   <button type="button" class="tab is-on" data-tab="home" aria-label="Home"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg></span><span class="lb">Home</span></button>
   <button type="button" class="tab" data-tab="meter" aria-label="Meter"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 18a8 8 0 1 1 16 0"/><path d="m12 18 4.5-6"/><circle cx="12" cy="18" r="1.4"/></svg><i class="badge" id="meter-badge"></i></span><span class="lb">Meter</span></button>
   <button type="button" class="tab" data-tab="plan" aria-label="Plan"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></svg></span><span class="lb">Plan</span></button>
-  <button type="button" class="tab" data-tab="keyla" aria-label="Keyla"><span class="ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="16.5" rx="4.6" ry="3.8"/><circle cx="6" cy="11" r="1.9"/><circle cx="9.6" cy="6.8" r="1.9"/><circle cx="14.4" cy="6.8" r="1.9"/><circle cx="18" cy="11" r="1.9"/></svg></span><span class="lb">Keyla</span></button>
+  <button type="button" class="tab" data-tab="papers" aria-label="Papers"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.2h7a2 2 0 0 1 2 2V18a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/><path d="M8 13.5h8"/></svg></span><span class="lb">Papers</span></button>
   <button type="button" class="tab" data-tab="todo" aria-label="To-do"><span class="ic"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="m8.5 12.2 2.4 2.4 4.8-5"/></svg></span><span class="lb">To-do</span></button>
 </nav>
 
 <!-- Confirm sheet (reset) and toast -->
+<!-- Document viewer: the pages, the date and note, and add / delete -->
+<div class="panel" id="docview" role="dialog" aria-modal="true" aria-labelledby="dv-title" hidden>
+  <header class="panel-bar"><button type="button" class="iconbtn close" id="dv-close" aria-label="Close"></button><span class="panel-title" id="dv-title"></span></header>
+  <div class="panel-body">
+    <div id="dv-pages"></div>
+    <div class="dv-empty card" id="dv-empty"><span class="lock-ic doc" aria-hidden="true"></span><p>Nothing here yet. Take a photo of it or pick a photo or PDF from the phone.</p></div>
+    <div class="flycard card" id="dv-fly" hidden></div>
+    <div class="dv-meta card">
+      <label class="field" id="dv-date-row"><span id="dv-date-label">Date</span><input type="date" id="dv-date"></label>
+      <label class="field"><span>Notes</span><textarea id="dv-note" rows="2" placeholder="Number, where the original is…"></textarea></label>
+    </div>
+    <button type="button" class="btn wide danger" id="dv-remove" hidden>Remove this document</button>
+  </div>
+  <footer class="panel-foot"><button type="button" class="btn primary" id="dv-cam">Take a photo</button><button type="button" class="btn" id="dv-file">Choose a file</button></footer>
+</div>
+
+<!-- One page full screen, pinch to zoom -->
+<div class="zoom" id="zoom" hidden><img id="zoom-img" alt=""><button type="button" class="iconbtn close light" id="zoom-close" aria-label="Close"></button></div>
+
+<!-- Add or edit a contact -->
+<div class="sheet form" id="cform" role="dialog" aria-modal="true" aria-labelledby="cf-title" hidden>
+  <span class="grabber" aria-hidden="true"></span>
+  <h3 id="cf-title">New contact</h3>
+  <button type="button" class="btn wide" id="cf-pick">Pick from my contacts</button>
+  <label class="field"><span>Name</span><input id="cf-name" autocomplete="off"></label>
+  <label class="field"><span>Who they are</span><input id="cf-role" autocomplete="off" placeholder="Vet, pet broker, farm gang…"></label>
+  <div class="chips" id="cf-chips"><button type="button">Vet</button><button type="button">Pet broker</button><button type="button">Farm gang</button><button type="button">Family</button><button type="button">Work</button><button type="button">Embassy</button></div>
+  <label class="field"><span>Phone</span><input id="cf-phone" type="tel" autocomplete="off" placeholder="+55 31 …"></label>
+  <label class="field"><span>Email</span><input id="cf-email" type="email" autocomplete="off"></label>
+  <label class="field"><span>Notes</span><textarea id="cf-notes" rows="2"></textarea></label>
+  <div class="sheet-actions"><button type="button" class="btn" id="cf-cancel">Cancel</button><button type="button" class="btn primary" id="cf-save">Save</button></div>
+</div>
+
+<!-- A list of choices (add a page, contact actions…) -->
+<div class="sheet" id="actions" role="dialog" aria-modal="true" aria-labelledby="ac-title" hidden>
+  <span class="grabber" aria-hidden="true"></span>
+  <h3 id="ac-title"></h3>
+  <p class="fine" id="ac-text"></p>
+  <div class="ac-list" id="ac-list"></div>
+</div>
+
+<!-- Ask for a name (a new document) -->
+<div class="sheet form" id="ask" role="dialog" aria-modal="true" aria-labelledby="ask-title" hidden>
+  <span class="grabber" aria-hidden="true"></span>
+  <h3 id="ask-title"></h3>
+  <label class="field"><span id="ask-label">Name</span><input id="ask-input" autocomplete="off"></label>
+  <div class="sheet-actions"><button type="button" class="btn" id="ask-cancel">Cancel</button><button type="button" class="btn primary" id="ask-ok">Add</button></div>
+</div>
+
+<!-- Kê-Kê Run (tap the duck on the beach five times) -->
+<div class="game" id="game" hidden>
+  <canvas id="game-cv"></canvas>
+  <button type="button" class="iconbtn close light" id="game-close" aria-label="Close the game"></button>
+</div>
+
+<div class="bubble-say" id="say" aria-live="polite" hidden></div>
+<div class="busy" id="busy" hidden><span></span></div>
+
 <div class="scrim" id="scrim" hidden></div>
 <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
   <span class="grabber" aria-hidden="true"></span>

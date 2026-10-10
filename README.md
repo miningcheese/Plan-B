@@ -1,6 +1,6 @@
 # Plan B: Mauritius
 
-Our Plan B as a little Android app. It works offline (everything is inside the app) and asks for no permissions.
+Our Plan B as a little Android app. It works offline (everything is inside the app) and asks for no permissions: the camera, files, contacts, calendar and maps are reached through their own apps.
 
 **Screens** (tab bar at the bottom):
 
@@ -8,15 +8,20 @@ Our Plan B as a little Android app. It works offline (everything is inside the a
 - **Meter**: the Uh-Oh-Meter. Tick only what is actually happening; Keyla climbs the bar. "Monthly check reminder" adds a repeating event to the calendar.
 - **Go mode**: when the meter hits red the app asks "Is this for real?" ("Just testing" only moves the meter). Once started, the 14 days become dated tasks with a "Day 4 of 14" countdown on Home and in the top bar. "End Go mode" (Plan → 14 days) clears the countdown, its ticks and the meter.
 - **Plan**: Route A, Route B, the 14 days and Packing (go bag, Keyla's bag, farm kit). Each drive has a button that opens Google Maps directions.
-- **Keyla**: her ready-to-fly kit, and the email to Mauritius ("Write it in my email app" opens it ready to send).
+- **Papers**:
+  - **Documents**: a checklist of her papers and Keyla's. Tap one to take a photo or pick a photo or PDF, or to see it (pinch to zoom). Dates go here too: passport expiry (warns under a year), Keyla's rabies shot and blood test, which work out when she can fly. Locked behind the phone's fingerprint or PIN, kept only in the app (not in backups or the gallery), and exportable as one zip to Google Drive or to the phone / SD card / USB.
+  - **Keyla**: her flying window, her ready-to-fly kit, and the email to Mauritius ("Write it in my email app" opens it ready to send).
+  - **Contacts**: tap to call, WhatsApp or email; **+** adds one (or picks it from the phone's contacts). Comes with the Brazilian embassy in Pretoria (it covers Mauritius), the honorary consulate in Port Louis and Mauritius pet import.
 - **To-do**: stuff we do now, with progress.
+
+**Kê-Kê:** tap Keyla on any drawing and she hops, says one of her lines and plays one of the voice clips (`assets/voice/`). Home has a line of the day. Tap the duck on the beach five times for **Kê-Kê Run**.
 
 Ticks on the meter and the to-do list stay saved on the phone, also across updates. The back button returns to Home before it leaves the app.
 
 ## Changing it
 
-- Text and layout: `app/src/main/assets/index.html`. Look: `app.css`. Behaviour and the drawings: `app.js`.
-- The phone side (clipboard, haptics, email, calendar, back button, edge-to-edge): `app/src/main/java/com/idklmao/planb/MainActivity.kt`.
+- Text and layout: `app/src/main/assets/index.html`. Look: `app.css`. Behaviour, the drawings, Kê-Kê's lines (`KEKE`), the document list (`DOCS`) and the preset contacts (`PRESETS`): `app.js`.
+- The phone side (clipboard, haptics, email, calendar, the lock, camera and files, export, contacts, back button, edge-to-edge): `MainActivity.kt`; document storage: `DocStore.kt` (both in `app/src/main/java/com/idklmao/planb/`).
 - Open `index.html` in a desktop browser to try changes; everything works there except the phone-only bits.
 
 ## Getting it onto a phone
