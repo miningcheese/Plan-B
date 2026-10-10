@@ -5,7 +5,7 @@ Our Plan B as a little Android app, called **Business App** on the phone (it's a
 **Screens** (tab bar at the bottom):
 
 - **Home**: the beach, where the meter stands right now, how far the to-do list is, where we'd live and why Mauritius.
-- **Meter**: the Uh-Oh-Meter. Tick only what is actually happening; Keyla climbs the bar. "Monthly check reminder" adds a repeating event to the calendar.
+- **Meter**: the Uh-Oh-Meter. Tick only what is actually happening; Keyla climbs the bar. "Reminder every 2 weeks" adds a repeating meter check to the calendar (Sundays, 20:00).
 - **Go mode**: when the meter hits red the app asks "Is this for real?" ("Just testing" only moves the meter). Once started, the 14 days become dated tasks with a "Day 4 of 14" countdown on Home and in the top bar. "End Go mode" (Plan → 14 days) clears the countdown, its ticks and the meter.
 - **Plan**: Route A, Route B, the 14 days and Packing (go bag, Keyla's bag, farm kit). Each drive has a button that opens Google Maps directions.
 - **Papers**:

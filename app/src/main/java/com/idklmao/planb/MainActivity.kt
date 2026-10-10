@@ -401,18 +401,19 @@ class MainActivity : Activity() {
             launch(intent, "No email app found. Use the Copy buttons")
         }
 
-        /** Opens the calendar app with a monthly "check the meter" event, starting the 1st of next month at 20:00. */
+        /** Opens the calendar app with a "check the meter" event every two weeks, starting the coming Sunday at 20:00. */
         @JavascriptInterface
-        fun remindMonthly() = runOnUiThread {
-            val start = Calendar.getInstance().apply {
-                add(Calendar.MONTH, 1)
-                set(Calendar.DAY_OF_MONTH, 1)
+        fun remindCheck() = runOnUiThread {
+            val now = Calendar.getInstance()
+            val start = (now.clone() as Calendar).apply {
+                set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY)
                 set(Calendar.HOUR_OF_DAY, 20)
                 set(Calendar.MINUTE, 0)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
+                while (!after(now)) add(Calendar.WEEK_OF_YEAR, 1)
             }.timeInMillis
-            calendarEvent("Business App: check the Uh-Oh-Meter", "Open Business App together and tick only what is actually happening.", start, "FREQ=MONTHLY")
+            calendarEvent("Business App: check the Uh-Oh-Meter", "Open Business App together and tick only what is actually happening.", start, "FREQ=WEEKLY;INTERVAL=2")
         }
 
         /** Opens the calendar app with a one-off all-evening reminder on [dayMillis]. */

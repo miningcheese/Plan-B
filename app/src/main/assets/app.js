@@ -333,8 +333,8 @@
       onYes:function(){ sigs.forEach(function(s){ s.checked = false; }); save(MKEY, sigs); update(true); toast('Meter reset'); } });
   });
   $('remind').addEventListener('click', function(){
-    if (N && N.remindMonthly) N.remindMonthly();
-    else toast('Add a monthly "check the meter" in your calendar');
+    if (N && N.remindCheck) N.remindCheck();
+    else toast('Add a "check the meter" every two weeks in your calendar');
   });
 
 
