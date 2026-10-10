@@ -14,9 +14,9 @@ import urllib.request
 API = "https://commons.wikimedia.org/w/api.php"
 UA = {"User-Agent": "BusinessApp-photo-scout/1.0 (private personal app; github.com/miningcheese/plan-b)"}
 QUERIES = [
-    "Port Louis skyline", "Caudan Waterfront", "Port Louis Mauritius street", "Ebene Cybercity",
-    "Grand Baie Mauritius", "Port Louis harbour", "Le Morne Brabant beach", "Flic en Flac beach",
-    "Trou aux Biches", "Belle Mare beach Mauritius", "Tamarin Mauritius", "Ile aux Cerfs",
+    "Ebene Cybercity Mauritius", "Ebène Mauritius tower", "Port Louis aerial view", "Caudan Waterfront night",
+    "Port Louis Chinatown", "Bagatelle Mall Mauritius", "La Croisette Grand Baie", "Port Louis skyscrapers",
+    "Mauritius Port Louis waterfront evening", "Rose Hill Mauritius", "Quatre Bornes Mauritius", "Le Caudan Waterfront",
 ]
 OK_LICENSES = ("CC BY", "CC0", "Public domain", "CC-BY", "PD")
 
@@ -33,6 +33,7 @@ def text(em, key):
 
 def main():
     os.makedirs("scout", exist_ok=True)
+    start = len([f for f in os.listdir("scout") if f.endswith(".jpg")])
     meta = []
     for qi, q in enumerate(QUERIES):
         r = get({"action": "query", "generator": "search", "gsrsearch": q + " filetype:bitmap", "gsrnamespace": 6,
@@ -45,7 +46,7 @@ def main():
             lic = text(em, "LicenseShortName")
             if ii.get("mime") != "image/jpeg" or not lic.startswith(OK_LICENSES) or ii.get("width", 0) < 1000:
                 continue
-            name = f"q{qi:02d}-{len(meta):03d}.jpg"
+            name = f"c{qi:02d}-{start + len(meta):03d}.jpg"
             try:
                 with urllib.request.urlopen(urllib.request.Request(ii["thumburl"], headers=UA), timeout=60) as img:
                     data = img.read()
@@ -61,7 +62,8 @@ def main():
             if kept >= 6:
                 break
         print(q, kept)
-    json.dump(meta, open("scout/meta.json", "w"), indent=1, ensure_ascii=False)
+    old = json.load(open("scout/meta.json")) if os.path.exists("scout/meta.json") else []
+    json.dump(old + meta, open("scout/meta.json", "w"), indent=1, ensure_ascii=False)
 
 
 if __name__ == "__main__":
