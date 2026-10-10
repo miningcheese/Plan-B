@@ -99,7 +99,7 @@ class DocStore(private val context: Context) {
     fun exportZip(titles: JSONObject, index: String): File {
         val dir = File(context.cacheDir, "export").apply { deleteRecursively(); mkdirs() }
         val day = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
-        val zip = File(dir, "Plan B documents $day.zip")
+        val zip = File(dir, "Business App documents $day.zip")
         ZipOutputStream(FileOutputStream(zip)).use { out ->
             out.putNextEntry(ZipEntry("README.txt"))
             out.write(index.toByteArray())

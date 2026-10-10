@@ -677,7 +677,7 @@
         var b = document.createElement('button'); b.type = 'button'; b.className = 'btn small'; b.textContent = 'Remind me to redo it';
         b.addEventListener('click', function(){
           var when = addDays(f.to, -45); if (when < today0()) when = addDays(today0(), 1);
-          N.remindOn("Plan B: redo Keyla's rabies blood test", "Her flying window closes on " + longDate(f.to) + ". Book the vet for a new blood draw (FAVN / RFFIT).", when.getTime());
+          N.remindOn("Business App: redo Keyla's rabies blood test", "Her flying window closes on " + longDate(f.to) + ". Book the vet for a new blood draw (FAVN / RFFIT).", when.getTime());
         });
         el.appendChild(b);
       }
@@ -730,7 +730,7 @@
           }
           var del = document.createElement('button'); del.type = 'button'; del.className = 'copy danger'; del.textContent = 'Delete';
           del.addEventListener('click', function(){
-            openSheet({ title:'Delete this ' + (it.kind === 'pdf' ? 'PDF' : 'photo') + '?', text:'It is removed from Plan B. Copies you exported stay where they are.', yes:'Delete', no:'Keep it',
+            openSheet({ title:'Delete this ' + (it.kind === 'pdf' ? 'PDF' : 'photo') + '?', text:'It is removed from the app. Copies you exported stay where they are.', yes:'Delete', no:'Keep it',
               onYes:function(){ if (N && N.deleteDocItem) N.deleteDocItem(d.id, it.id); } });
           });
           bar.appendChild(del);
@@ -757,7 +757,7 @@
   $('dv-file').addEventListener('click', function(){ if (N && N.addFromFiles) N.addFromFiles(dvId); else toast('Picking files works in the app on the phone'); });
   $('dv-remove').addEventListener('click', function(){
     var d = docById(dvId);
-    openSheet({ title:'Remove "' + d.t + '"?', text:'Its photos and files are deleted from Plan B.', yes:'Remove', no:'Keep it', onYes:function(){
+    openSheet({ title:'Remove "' + d.t + '"?', text:'Its photos and files are deleted from the app.', yes:'Remove', no:'Keep it', onYes:function(){
       if (N && N.deleteDoc) N.deleteDoc(d.id);
       extraDocs = extraDocs.filter(function(x){ return x.id !== d.id; }); saveJson(XKEY, extraDocs);
       delete meta[d.id]; saveJson(MEKEY, meta);
@@ -818,7 +818,7 @@
 
   // Export: one zip with a folder per document and a README with her dates and notes
   function exportIndex(){
-    var lines = ['Plan B documents, exported ' + longDate(new Date()), ''];
+    var lines = ['Business App documents, exported ' + longDate(new Date()), ''];
     allDocs().forEach(function(d){
       var m = metaOf(d.id), n = pageCount(d.id);
       if (!n && !m.date && !m.note) return;
@@ -886,7 +886,7 @@
     if (c.email) acts.push({ label:'Email ' + c.email, fn:function(){ if (N && N.email) N.email(c.email, '', ''); else location.href = 'mailto:' + c.email; } });
     acts.push({ label:'Edit', fn:function(){ contactForm(c); } });
     acts.push({ label:'Delete', kind:'danger', fn:function(){
-      openSheet({ title:'Delete ' + c.name + '?', text:'Only from Plan B. Your phone contacts stay as they are.', yes:'Delete', no:'Keep',
+      openSheet({ title:'Delete ' + c.name + '?', text:'Only from this app. Your phone contacts stay as they are.', yes:'Delete', no:'Keep',
         onYes:function(){ contacts = contacts.filter(function(x){ return x !== c; }); saveJson(CKEY, contacts); renderContacts(); } });
     } });
     openActions({ title:c.name, text:c.notes || '', actions:acts });

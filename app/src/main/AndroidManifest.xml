@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- No permissions: the plan ships inside the app and works offline. The camera, files, contacts,
-     calendar and maps are reached through their own apps, which ask nothing of Plan B. -->
+     calendar and maps are reached through their own apps, which ask nothing of this app. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application

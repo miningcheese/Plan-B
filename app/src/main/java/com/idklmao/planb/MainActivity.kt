@@ -37,7 +37,7 @@ import java.util.Calendar
 import java.util.concurrent.Executors
 
 /**
- * The Plan B app: assets/index.html (screens and tabs drawn by app.js) full screen, edge to edge.
+ * Business App (our Plan B): assets/index.html (screens and tabs drawn by app.js) full screen, edge to edge.
  * The page calls [Bridge] as window.PlanB for the phone bits: clipboard, haptics, the email app,
  * the calendar, maps and calls, her documents (camera, files, the lock, export) and the back button.
  * Ticks, dates and contacts are kept in the page's localStorage; document files in [DocStore].
@@ -222,7 +222,7 @@ class MainActivity : Activity() {
         if (Build.VERSION.SDK_INT >= 29) {
             val builder = BiometricPrompt.Builder(this)
                 .setTitle("Unlock documents")
-                .setSubtitle("Plan B keeps her papers behind the phone's lock")
+                .setSubtitle("Her papers stay behind the phone's lock")
             if (Build.VERSION.SDK_INT >= 30) {
                 builder.setAllowedAuthenticators(BiometricManager.Authenticators.BIOMETRIC_WEAK or BiometricManager.Authenticators.DEVICE_CREDENTIAL)
             } else {
@@ -235,7 +235,7 @@ class MainActivity : Activity() {
             })
         } else {
             @Suppress("DEPRECATION")
-            val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Plan B keeps her papers behind the phone's lock")
+            val intent = keyguard.createConfirmDeviceCredentialIntent("Unlock documents", "Her papers stay behind the phone's lock")
             if (intent == null) setUnlocked(true, secure = false) else launchForResult(intent, REQ_UNLOCK, "Couldn't open the phone's lock")
         }
     }
@@ -361,7 +361,7 @@ class MainActivity : Activity() {
         @JavascriptInterface
         fun copy(text: String) {
             val clipboard = getSystemService(ClipboardManager::class.java)
-            clipboard.setPrimaryClip(ClipData.newPlainText("Plan B", text))
+            clipboard.setPrimaryClip(ClipData.newPlainText("Business App", text))
         }
 
         @JavascriptInterface
@@ -398,7 +398,7 @@ class MainActivity : Activity() {
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
             }.timeInMillis
-            calendarEvent("Plan B: check the Uh-Oh-Meter", "Open Plan B together and tick only what is actually happening.", start, "FREQ=MONTHLY")
+            calendarEvent("Business App: check the Uh-Oh-Meter", "Open Business App together and tick only what is actually happening.", start, "FREQ=MONTHLY")
         }
 
         /** Opens the calendar app with a one-off all-evening reminder on [dayMillis]. */

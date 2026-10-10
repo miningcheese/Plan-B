@@ -1,31 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- A palm on a Mauritius beach with the sun behind it, like the page's hero scene. -->
+<!-- Business App: a very serious leather briefcase. With a palm-tree sticker, because it's a business vacation. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <path android:fillColor="#FBE8C4" android:pathData="M57,38 a12,12 0 1,0 24,0 a12,12 0 1,0 -24,0 Z" />
-    <path android:fillColor="#D9962B" android:fillAlpha="0.35" android:pathData="M60,38 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 Z" />
-    <path android:strokeColor="#FFFFFF" android:strokeAlpha="0.8" android:strokeWidth="1.6" android:strokeLineCap="round"
-        android:pathData="M28,70 q4,-2 8,0 M66,72 q4,-2 8,0 M40,88 q4,-2 8,0 M62,86 q4,-2 8,0" />
-    <path android:fillColor="#F3DDB0" android:pathData="M26,78 a28,6.5 0 1,0 56,0 a28,6.5 0 1,0 -56,0 Z" />
-    <path android:strokeColor="#8C5C38" android:strokeWidth="3.4" android:strokeLineCap="round"
-        android:pathData="M45,78 Q42,60 47,44" />
-    <group android:pivotX="47" android:pivotY="44" android:rotation="-149">
-        <path android:fillColor="#6FA488" android:pathData="M47,44 a7.5,2.8 0 1,0 15,0 a7.5,2.8 0 1,0 -15,0 Z" />
+    <!-- Scaled down a little so round icon masks never clip the corners. -->
+    <group android:pivotX="54" android:pivotY="57" android:scaleX="0.88" android:scaleY="0.88">
+    <!-- handle -->
+    <path android:strokeColor="#5A3A26" android:strokeWidth="4" android:strokeLineCap="round"
+        android:pathData="M45,42 V38 A4,4 0 0 1 49,34 H59 A4,4 0 0 1 63,38 V42" />
+    <!-- shadow -->
+    <path android:fillColor="#33243C" android:fillAlpha="0.12" android:pathData="M30,79 a24,3 0 1,0 48,0 a24,3 0 1,0 -48,0 Z" />
+    <!-- case and lid -->
+    <path android:fillColor="#A8703A" android:pathData="M34,41 H74 A6,6 0 0 1 80,47 V71 A6,6 0 0 1 74,77 H34 A6,6 0 0 1 28,71 V47 A6,6 0 0 1 34,41 Z" />
+    <path android:fillColor="#8C5C38" android:pathData="M34,41 H74 A6,6 0 0 1 80,47 V54 H28 V47 A6,6 0 0 1 34,41 Z" />
+    <!-- clasps -->
+    <path android:fillColor="#F2B33C" android:pathData="M36,51 H43 V58 H36 Z M65,51 H72 V58 H65 Z" />
+    <!-- palm sticker -->
+    <path android:fillColor="#FBF6F9" android:pathData="M58,67 a9,9 0 1,0 18,0 a9,9 0 1,0 -18,0 Z" />
+    <path android:fillColor="#BFE6D8" android:pathData="M59.5,67 a7.5,7.5 0 1,0 15,0 a7.5,7.5 0 1,0 -15,0 Z" />
+    <path android:strokeColor="#8C5C38" android:strokeWidth="1.5" android:strokeLineCap="round" android:pathData="M67,73 Q66,68 68,64" />
+    <group android:pivotX="68" android:pivotY="64" android:rotation="-160">
+        <path android:fillColor="#2C8C7C" android:pathData="M68,64 a3,1.3 0 1,0 6,0 a3,1.3 0 1,0 -6,0 Z" />
     </group>
-    <group android:pivotX="47" android:pivotY="44" android:rotation="-115">
-        <path android:fillColor="#6FA488" android:pathData="M47,44 a8.5,2.8 0 1,0 17,0 a8.5,2.8 0 1,0 -17,0 Z" />
+    <group android:pivotX="68" android:pivotY="64" android:rotation="-105">
+        <path android:fillColor="#2C8C7C" android:pathData="M68,64 a3.2,1.3 0 1,0 6.4,0 a3.2,1.3 0 1,0 -6.4,0 Z" />
     </group>
-    <group android:pivotX="47" android:pivotY="44" android:rotation="-69">
-        <path android:fillColor="#6FA488" android:pathData="M47,44 a8,2.8 0 1,0 16,0 a8,2.8 0 1,0 -16,0 Z" />
+    <group android:pivotX="68" android:pivotY="64" android:rotation="-55">
+        <path android:fillColor="#2C8C7C" android:pathData="M68,64 a3.2,1.3 0 1,0 6.4,0 a3.2,1.3 0 1,0 -6.4,0 Z" />
     </group>
-    <group android:pivotX="47" android:pivotY="44" android:rotation="-29">
-        <path android:fillColor="#6FA488" android:pathData="M47,44 a7.5,2.8 0 1,0 15,0 a7.5,2.8 0 1,0 -15,0 Z" />
+    <group android:pivotX="68" android:pivotY="64" android:rotation="-10">
+        <path android:fillColor="#2C8C7C" android:pathData="M68,64 a3,1.3 0 1,0 6,0 a3,1.3 0 1,0 -6,0 Z" />
     </group>
-    <group android:pivotX="47" android:pivotY="44" android:rotation="11">
-        <path android:fillColor="#6FA488" android:pathData="M47,44 a6.5,2.8 0 1,0 13,0 a6.5,2.8 0 1,0 -13,0 Z" />
     </group>
-    <path android:fillColor="#5E8E72" android:pathData="M45,44 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0 Z" />
 </vector>
