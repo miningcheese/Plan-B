@@ -259,3 +259,47 @@ ol.stops li:last-child::after{display:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ---------- route map buttons ---------- */
+.maps{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.maplink{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;padding:6px 12px;border-radius:99px;background:rgba(var(--accent-rgb),.12);color:var(--accent-soft);text-decoration:none}
+.maplink::before{content:"";width:8px;height:8px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:2px solid currentColor}
+.maplink:active{background:rgba(var(--accent-rgb),.24)}
+.maproute{display:block;text-align:center;text-decoration:none}
+
+/* ---------- Go mode ---------- */
+.gopill{position:absolute;right:calc(12px + var(--sar));bottom:11px;border:0;border-radius:99px;background:#D9557E;color:#FFF8EE;font-weight:700;font-size:13px;padding:6px 12px;cursor:pointer;box-shadow:0 4px 12px -4px rgba(217,85,126,.6)}
+.gocard,.gohead{flex-direction:column;gap:4px;padding:16px 18px;background:linear-gradient(160deg,#F6BFD2,#FADDE7 70%);border-color:rgba(217,85,126,.4)}
+.gohead{display:flex}
+.go-kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:#9E3D5D;display:flex;align-items:center;gap:8px}
+.go-kicker::before{content:"";width:9px;height:9px;border-radius:50%;background:#D9557E;animation:pulse 1.6s ease-in-out infinite}
+.go-day{font-family:var(--serif);font-size:30px;line-height:1.1}
+.go-fly{font-size:15px;color:var(--ink-dim)}
+.gobar{display:block;width:100%;height:7px;border-radius:99px;background:rgba(158,61,93,.15);overflow:hidden;margin:6px 0 2px}
+.gobar i{display:block;height:100%;width:0;border-radius:99px;background:#D9557E;transition:width .5s ease}
+.go-next{font-size:14px;color:var(--ink);line-height:1.4}
+.day0{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-dim);margin-top:6px}
+.day0 input{font:inherit;color:var(--ink);background:#FBF6F9;border:1px solid var(--hair);border-radius:10px;padding:6px 10px}
+.gohead .btn{align-self:flex-start;margin-top:8px}
+.gobanner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px 12px 18px;background:#FADDE7;border-color:rgba(217,85,126,.4);font-weight:600;font-size:15px}
+.gobanner .btn{padding:9px 16px;font-size:14px;background:#C44A71;flex:none}
+
+.day .dates{font-size:13px;color:var(--ink-dim);margin-top:-2px}
+.day .dates:empty{display:none}
+.gtask{display:flex;gap:10px;align-items:flex-start;position:relative}
+.gtask input{position:absolute;opacity:0;width:1px;height:1px}
+.gtask .box{display:none;width:21px;height:21px;border-radius:7px}
+body.go .day ul{list-style:none;padding-left:0;gap:6px}
+body.go .gtask{cursor:pointer}
+body.go .gtask .box{display:grid}
+.gtask input:checked + .box{background:var(--accent);border-color:var(--accent)}
+.gtask input:checked + .box::after{content:"";width:9px;height:5px;border-left:2px solid #FBF6F9;border-bottom:2px solid #FBF6F9;transform:rotate(-45deg) translate(1px,-1px)}
+.gtask input:checked ~ span:last-child{color:var(--ink-dim);text-decoration:line-through;text-decoration-color:rgba(var(--accent-rgb),.7);text-decoration-thickness:2px}
+.day.now{border-color:#D9557E;box-shadow:0 0 0 2px rgba(217,85,126,.25),var(--shadow)}
+.day.now .d::after,.day.late .d::after,.day.done .d::after{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:2px 8px;border-radius:99px;margin-left:10px;vertical-align:3px}
+.day.now .d::after{content:"now";background:#D9557E;color:#FFF8EE}
+.day.late .d::after{content:"late";background:#FBE8C4;color:#8E5F14}
+.day.done .d::after{content:"done";background:#BFE6D8;color:#206B5E}
+.day.done{opacity:.75}
+.seg{grid-template-columns:repeat(4,1fr)}
+.seg button{font-size:14px}

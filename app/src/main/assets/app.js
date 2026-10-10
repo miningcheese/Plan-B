@@ -196,7 +196,12 @@
     clearTimeout(toastTimer); toastTimer = setTimeout(function(){ toastEl.classList.remove('on'); }, 1800);
   }
   var sheet = $('sheet'), scrim = $('scrim'), sheetYes = null;
-  function openSheet(onYes){ sheetYes = onYes; sheet.hidden = false; scrim.hidden = false; syncBack(); }
+  // openSheet({ title, text, yes, no, onYes })
+  function openSheet(o){
+    $('sheet-title').textContent = o.title; $('sheet-text').textContent = o.text;
+    $('sheet-yes').textContent = o.yes || 'OK'; $('sheet-no').textContent = o.no || 'Cancel';
+    sheetYes = o.onYes; sheet.hidden = false; scrim.hidden = false; syncBack();
+  }
   function closeSheet(){ sheet.hidden = true; scrim.hidden = true; sheetYes = null; syncBack(); }
   scrim.addEventListener('click', closeSheet);
   $('sheet-no').addEventListener('click', closeSheet);
@@ -247,10 +252,10 @@
 
   // Plan: Route A / Route B / 14 days
   var segs = all('.seg button');
-  segs.forEach(function(b){ b.addEventListener('click', function(){
-    haptic('tick');
-    segs.forEach(function(x){ var on = x === b; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); $(x.dataset.seg).hidden = !on; });
-  }); });
+  function selectSeg(id){
+    segs.forEach(function(x){ var on = x.dataset.seg === id; x.classList.toggle('is-on', on); x.setAttribute('aria-selected', on); $(x.dataset.seg).hidden = !on; });
+  }
+  segs.forEach(function(b){ b.addEventListener('click', function(){ haptic('tick'); selectSeg(b.dataset.seg); }); });
 
   /* ---- meter ---- */
   var sigs = all('#meter input[type=checkbox]');
@@ -275,15 +280,96 @@
     $('meter-badge').className = 'badge ' + state;
     if (current === 'meter') syncBar();
     if (fromTap) haptic(state === 'go' && was !== 'go' ? 'heavy' : 'tick');
+    syncGoBanner();
+    // A red line could be her trying the app out, so ask before starting the countdown.
+    if (fromTap && state === 'go' && was !== 'go' && !goMode) askGo();
   }
   sigs.forEach(function(s){ s.addEventListener('change', function(){ save(MKEY, sigs); update(true); }); });
   $('reset').addEventListener('click', function(){
     if (!sigs.some(function(s){ return s.checked; })){ toast('Nothing ticked. All calm ♥'); return; }
-    openSheet(function(){ sigs.forEach(function(s){ s.checked = false; }); save(MKEY, sigs); update(true); toast('Meter reset'); });
+    openSheet({ title:'Reset the meter?', text:'This clears every tick on the Uh-Oh-Meter.', yes:'Reset', no:'Keep them',
+      onYes:function(){ sigs.forEach(function(s){ s.checked = false; }); save(MKEY, sigs); update(true); toast('Meter reset'); } });
   });
   $('remind').addEventListener('click', function(){
     if (N && N.remindMonthly) N.remindMonthly();
     else toast('Add a monthly "check the meter" in your calendar');
+  });
+
+
+  /* ---- Go mode: the 14 days as a dated countdown ---- */
+  var GKEY = 'planb-go', GTKEY = 'planb-go-tasks', goMode = null;
+  try { goMode = JSON.parse(localStorage.getItem(GKEY) || 'null'); } catch(e){ goMode = null; }
+  var gtasks = all('.gtask input'), gsaved = load(GTKEY);
+  gtasks.forEach(function(b){ if (gsaved[b.id]) b.checked = true; });
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function ymd(d){ return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parseYmd(v){ var p = v.split('-'); return new Date(+p[0], p[1] - 1, +p[2]); }
+  function addDays(d, n){ var x = new Date(d.getTime()); x.setDate(x.getDate() + n); return x; }
+  function today0(){ var n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); }
+  function fmt(d){ try { return d.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short' }); } catch(e){ return ymd(d); } }
+  function saveGo(){ try { if (goMode) localStorage.setItem(GKEY, JSON.stringify(goMode)); else localStorage.removeItem(GKEY); } catch(e){} }
+  function startGo(){ goMode = { day0: ymd(today0()) }; saveGo(); renderGo(); haptic('heavy'); toast('Go mode is on. Day 0 is today'); }
+  function endGo(){
+    goMode = null; saveGo();
+    gtasks.forEach(function(b){ b.checked = false; }); save(GTKEY, gtasks);
+    sigs.forEach(function(s){ s.checked = false; }); save(MKEY, sigs);
+    update(false); renderGo(); toast('Go mode ended. All calm ♥');
+  }
+  function askGo(){
+    openSheet({ title:'Is this for real?', text:"A red line means we leave in 14 days. Start Go mode with today as Day 0? If you're just trying the app, nothing else happens.",
+      yes:"It's real, start", no:'Just testing', onYes:startGo });
+  }
+  function syncGoBanner(){
+    var b = $('gobanner'); if (!b) return;
+    b.hidden = !!goMode || state !== 'go';
+  }
+  function renderGo(){
+    var on = !!goMode;
+    document.body.classList.toggle('go', on);
+    $('gocard').hidden = !on; $('gohead').hidden = !on; $('gopill').hidden = !on; $('days-hint').hidden = on;
+    gtasks.forEach(function(b){ b.disabled = !on; });
+    syncGoBanner();
+    var days = all('#days .day');
+    if (!on){ days.forEach(function(li){ li.classList.remove('now', 'late', 'done'); li.querySelector('.dates').textContent = ''; }); return; }
+    var start = parseYmd(goMode.day0), d = Math.round((today0() - start) / 864e5), fly = addDays(start, 14), left = 14 - d;
+    var dayText = d < 0 ? 'Starts ' + fmt(start) : d <= 14 ? 'Day ' + d + ' of 14' : 'Day ' + d;
+    var flyText = d < 14 ? 'We fly ' + fmt(fly) + ' · ' + left + (left === 1 ? ' day' : ' days') + ' to go' : d === 14 ? 'We fly today ♥' : 'Flight day was ' + fmt(fly);
+    var pct = Math.max(0, Math.min(100, d / 14 * 100)) + '%';
+    $('gocard-day').textContent = $('gohead-day').textContent = dayText;
+    $('gocard-fly').textContent = $('gohead-fly').textContent = flyText;
+    $('gocard-bar').style.width = $('gohead-bar').style.width = pct;
+    $('gopill').textContent = d >= 0 && d <= 14 ? 'Day ' + d + '/14' : 'Go mode';
+    $('day0').value = goMode.day0;
+    days.forEach(function(li){
+      var from = +li.dataset.from, to = +li.dataset.to, boxes = all('input', li);
+      li.querySelector('.dates').textContent = fmt(addDays(start, from)) + (from !== to ? ' – ' + fmt(addDays(start, to)) : '');
+      var done = boxes.every(function(b){ return b.checked; });
+      li.classList.toggle('done', done);
+      li.classList.toggle('late', !done && d > to);
+      li.classList.toggle('now', !done && d >= from && d <= to);
+    });
+    var next = gtasks.filter(function(b){ return !b.checked; })[0];
+    $('gocard-next').textContent = next ? 'Next: ' + next.parentNode.lastElementChild.textContent : 'Everything done. Grab Keyla, we fly ♥';
+  }
+  function openCountdown(){ show('plan'); selectSeg('days'); screens.plan.scrollTo({ top:0 }); }
+  $('gopill').addEventListener('click', openCountdown);
+  $('gocard').addEventListener('click', openCountdown);
+  $('gobanner-btn').addEventListener('click', startGo);
+  $('go-end').addEventListener('click', function(){
+    openSheet({ title:'End Go mode?', text:'This clears the countdown, its ticks and the meter. Use it after testing, or once things calm down.',
+      yes:'End Go mode', no:'Keep going', onYes:endGo });
+  });
+  $('day0').addEventListener('change', function(e){ if (e.target.value){ goMode.day0 = e.target.value; saveGo(); renderGo(); } });
+  gtasks.forEach(function(b){ b.addEventListener('change', function(){ save(GTKEY, gtasks); haptic(b.checked ? 'tick' : 'light'); renderGo(); }); });
+  // The day changes at midnight; refresh when she comes back to the app.
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) renderGo(); });
+
+  /* ---- packing ---- */
+  var PKEY = 'planb-pack', packs = all('#pack input'), psaved = load(PKEY);
+  packs.forEach(function(b){ if (psaved[b.id]) b.checked = true; b.addEventListener('change', function(){ save(PKEY, packs); haptic(b.checked ? 'tick' : 'light'); }); });
+  $('pack-reset').addEventListener('click', function(){
+    openSheet({ title:'Untick all packing?', text:'Clears the go bag, Keyla’s bag and the farm kit.', yes:'Untick all', no:'Keep them',
+      onYes:function(){ packs.forEach(function(b){ b.checked = false; }); save(PKEY, packs); toast('Packing cleared'); } });
   });
 
   /* ---- to-do ---- */
@@ -341,6 +427,7 @@
 
   /* ---- start ---- */
   update(false);
+  renderGo();
   prog();
   syncBar(); syncBack();
   hero(); duo(); gauge();

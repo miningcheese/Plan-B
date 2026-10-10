@@ -6,7 +6,8 @@ Our Plan B as a little Android app. It works offline (everything is inside the a
 
 - **Home**: the beach, where the meter stands right now, how far the to-do list is, where we'd live and why Mauritius.
 - **Meter**: the Uh-Oh-Meter. Tick only what is actually happening; Keyla climbs the bar. "Monthly check reminder" adds a repeating event to the calendar.
-- **Plan**: Route A, Route B and the 14 days, one tap apart.
+- **Go mode**: when the meter hits red the app asks "Is this for real?" ("Just testing" only moves the meter). Once started, the 14 days become dated tasks with a "Day 4 of 14" countdown on Home and in the top bar. "End Go mode" (Plan → 14 days) clears the countdown, its ticks and the meter.
+- **Plan**: Route A, Route B, the 14 days and Packing (go bag, Keyla's bag, farm kit). Each drive has a button that opens Google Maps directions.
 - **Keyla**: her ready-to-fly kit, and the email to Mauritius ("Write it in my email app" opens it ready to send).
 - **To-do**: stuff we do now, with progress.
 
