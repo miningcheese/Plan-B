@@ -855,6 +855,7 @@
   var contacts = loadJson(CKEY, null);
   if (!contacts){ contacts = PRESETS.slice(); saveJson(CKEY, contacts); }
   function digits(p){ return (p || '').replace(/[^0-9+]/g, ''); }
+  // The number in international form without the +, as wa.me and signal.me want it.
   function waNumber(p){
     var d = digits(p);
     if (d.charAt(0) === '+') return d.slice(1);
@@ -879,6 +880,8 @@
     var acts = [];
     if (c.phone) acts.push({ label:'Call ' + c.phone, kind:'primary', fn:function(){ call(c.phone); } });
     if (c.phone2) acts.push({ label:(c.phone2Label || 'Call') + ': ' + c.phone2, fn:function(){ call(c.phone2); } });
+    // Signal first: it's what she uses. Both open the app straight on that number's chat.
+    if (c.phone) acts.push({ label:'Signal', fn:function(){ location.href = 'https://signal.me/#p/+' + waNumber(c.phone); } });
     if (c.phone) acts.push({ label:'WhatsApp', fn:function(){ location.href = 'https://wa.me/' + waNumber(c.phone); } });
     if (c.email) acts.push({ label:'Email ' + c.email, fn:function(){ if (N && N.email) N.email(c.email, '', ''); else location.href = 'mailto:' + c.email; } });
     acts.push({ label:'Edit', fn:function(){ contactForm(c); } });

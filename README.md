@@ -11,7 +11,7 @@ Our Plan B as a little Android app. It works offline (everything is inside the a
 - **Papers**:
   - **Documents**: a checklist of her papers and Keyla's. Tap one to take a photo or pick a photo or PDF, or to see it (pinch to zoom). Dates go here too: passport expiry (warns under a year), Keyla's rabies shot and blood test, which work out when she can fly. Locked behind the phone's fingerprint or PIN, kept only in the app (not in backups or the gallery), and exportable as one zip to Google Drive or to the phone / SD card / USB.
   - **Keyla**: her flying window, her ready-to-fly kit, and the email to Mauritius ("Write it in my email app" opens it ready to send).
-  - **Contacts**: tap to call, WhatsApp or email; **+** adds one (or picks it from the phone's contacts). Comes with the Brazilian embassy in Pretoria (it covers Mauritius), the honorary consulate in Port Louis and Mauritius pet import.
+  - **Contacts**: tap to call, Signal, WhatsApp or email; **+** adds one (or picks it from the phone's contacts). Comes with the Brazilian embassy in Pretoria (it covers Mauritius), the honorary consulate in Port Louis and Mauritius pet import.
 - **To-do**: stuff we do now, with progress.
 
 **Kê-Kê:** tap Keyla on any drawing and she hops, says one of her lines and plays one of the voice clips (`assets/voice/`). Home has a line of the day. Tap the duck on the beach five times for **Kê-Kê Run**.
@@ -28,7 +28,7 @@ Ticks on the meter and the to-do list stay saved on the phone, also across updat
 
 1. Every push runs **Build APK** and publishes a release, **Plan B build N** (Releases, on the right of the repo page).
 2. On your phone, open the latest release and download `PlanB-N.apk`.
-3. Send it to her: WhatsApp (attach it as a **Document**), Telegram, Google Drive or Quick Share.
+3. Send it to her: Signal or WhatsApp (attach it as a file / **Document**), Google Drive or Quick Share.
 4. She taps the file and allows "install unknown apps" when Android asks. If Play Protect warns about an unknown app: **More details → Install anyway**.
 
 New builds install over the old one and keep the ticks, since every build is signed with the same key (`app/debug.keystore`).
